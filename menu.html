@@ -16,19 +16,20 @@ body {
     color: #3b2f2f;
 }
 
+/* HEADER */
 header {
     background: white;
-    padding: 20px 0;
+    padding: 10px 0;
     text-align: center;
     box-shadow: 0 2px 10px rgba(0,0,0,0.05);
 }
 
 header img {
-    height: 95px;
+    height: 150px;
 }
 
 nav {
-    margin-top: 10px;
+    margin-top: 5px;
 }
 
 nav a {
@@ -38,6 +39,7 @@ nav a {
     font-weight: 500;
 }
 
+/* SECTION */
 section {
     padding: 80px 20px;
     max-width: 900px;
@@ -79,6 +81,56 @@ h1 {
     margin-top: 10px;
 }
 
+/* FLOATING ORDER BUTTON */
+.floating-order {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    background: #d6b98c;
+    color: #3b2f2f;
+    padding: 15px 25px;
+    border-radius: 25px;
+    font-weight: 600;
+    text-decoration: none;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    transition: 0.3s;
+}
+
+.floating-order:hover {
+    transform: translateY(-3px);
+}
+
+/* CONTACT */
+.contact-section {
+    padding: 100px 20px;
+    max-width: 900px;
+    margin: auto;
+}
+
+.contact-section h2 {
+    text-align: center;
+    font-family: 'Playfair Display', serif;
+    margin-bottom: 30px;
+}
+
+.contact-info {
+    text-align: center;
+    line-height: 1.8;
+}
+
+.contact-info a {
+    color: #3b2f2f;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.map-container {
+    margin-top: 40px;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+/* FOOTER */
 footer {
     background: #3b2f2f;
     color: white;
@@ -87,8 +139,9 @@ footer {
     margin-top: 80px;
 }
 
+/* MOBILE */
 @media(max-width:768px){
-    header img { height: 70px; }
+    header img { height: 110px; }
 }
 
 </style>
@@ -97,10 +150,12 @@ footer {
 <body>
 
 <header>
-    <img src="logo.png" alt="Pupusas y Más Logo">
+    <a href="index.html">
+        <img src="logo.png" alt="Pupusas y Más Logo">
+    </a>
     <nav>
         <a href="index.html">Inicio</a>
-        <a href="#contact">Contacto</a>
+        <a href="ordenar.html">Ordenar</a>
     </nav>
 </header>
 
@@ -133,11 +188,11 @@ footer {
     <div class="menu-category">
         <h2>Desayunos</h2>
         <div class="menu-item">
-            <span>Desayuno Completo (Huevo, Plátano, Frijoles, Queso, Mantequilla, Embutido y Tortillas)</span>
+            <span>Desayuno Completo</span>
             <span>120 LPS</span>
         </div>
         <div class="menu-item">
-            <span>Tortillas con Quesillo (Orden de 2)</span>
+            <span>Tortillas con Quesillo</span>
             <span>60 LPS</span>
         </div>
     </div>
@@ -161,13 +216,27 @@ footer {
 
 </section>
 
-<section id="contact">
-    <h2 style="text-align:center; font-family:'Playfair Display', serif;">Contáctanos</h2>
-    <p style="text-align:center;">
+<section class="contact-section">
+    <h2>Contáctanos</h2>
+    <div class="contact-info">
         📍 San Pedro Sula - Jardines del Valle, Calle 9 10, 21102<br>
-        📞 <a href="tel:+50487809196">+504 8780-9196</a>
-    </p>
+        📞 <a href="tel:+50487809196">+504 8780-9196</a><br><br>
+        📸 <a href="https://instagram.com/pupusasymashn" target="_blank">@pupusasymashn</a>
+    </div>
+
+    <div class="map-container">
+        <iframe 
+            src="https://www.google.com/maps?q=San+Pedro+Sula+Jardines+del+Valle+Calle+9+10&output=embed"
+            width="100%" 
+            height="350" 
+            style="border:0;" 
+            allowfullscreen="" 
+            loading="lazy">
+        </iframe>
+    </div>
 </section>
+
+<a href="ordenar.html" class="floating-order">Ordenar Ahora</a>
 
 <footer>
     © 2026 Pupusas y Más | Est. 2019
