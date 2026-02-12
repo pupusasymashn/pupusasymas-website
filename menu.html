@@ -15,7 +15,6 @@ body{
     color:#3b2f2f;
 }
 
-/* HEADER */
 header{
     background:white;
     padding:10px 30px;
@@ -30,20 +29,19 @@ header img{ height:120px; }
 .cart-icon{
     position:relative;
     cursor:pointer;
-    font-size:18px;
+    font-size:20px;
 }
 
 .cart-count{
     position:absolute;
     top:-6px;
-    right:-10px;
+    right:-12px;
     background:#d6b98c;
     border-radius:50%;
-    padding:4px 7px;
+    padding:4px 8px;
     font-size:12px;
 }
 
-/* MENU */
 section{
     max-width:1000px;
     margin:auto;
@@ -68,7 +66,7 @@ h1{
     display:flex;
     justify-content:space-between;
     align-items:center;
-    margin:14px 0;
+    margin:12px 0;
 }
 
 .controls{
@@ -94,7 +92,6 @@ h1{
     margin:0 6px;
 }
 
-/* CART PANEL */
 .cart{
     position:fixed;
     top:0;
@@ -178,35 +175,47 @@ input,select{
 <section>
 <h1>Nuestro Menú</h1>
 
+<!-- PUPUSAS -->
 <div class="category">
-<h2>Pupusas</h2>
+<h2>Pupusas (Orden de 2)</h2>
 
-<div class="menu-item">
-<span>Mixtas - 80 LPS</span>
-<div class="controls" id="Mixtas-control">
-<button class="add-btn" onclick="addItem('Mixtas',80)">Agregar</button>
-</div>
-</div>
+<div class="menu-item"><span>Mixtas – 80 LPS</span><div class="controls" id="Mixtas-control"><button class="add-btn" onclick="addItem('Mixtas',80)">Agregar</button></div></div>
+<div class="menu-item"><span>Quesillo – 80 LPS</span><div class="controls" id="Quesillo-control"><button class="add-btn" onclick="addItem('Quesillo',80)">Agregar</button></div></div>
+<div class="menu-item"><span>Chorizo Quesillo – 80 LPS</span><div class="controls" id="ChorizoQuesillo-control"><button class="add-btn" onclick="addItem('Chorizo Quesillo',80)">Agregar</button></div></div>
+<div class="menu-item"><span>Loroco Quesillo – 80 LPS</span><div class="controls" id="LorocoQuesillo-control"><button class="add-btn" onclick="addItem('Loroco Quesillo',80)">Agregar</button></div></div>
+<div class="menu-item"><span>Frijoles Quesillo – 80 LPS</span><div class="controls" id="FrijolesQuesillo-control"><button class="add-btn" onclick="addItem('Frijoles Quesillo',80)">Agregar</button></div></div>
+<div class="menu-item"><span>Revueltas – 90 LPS</span><div class="controls" id="Revueltas-control"><button class="add-btn" onclick="addItem('Revueltas',90)">Agregar</button></div></div>
+<div class="menu-item"><span>Extra Repollo y Encurtido – 25 LPS</span><div class="controls" id="ExtraRepollo-control"><button class="add-btn" onclick="addItem('Extra Repollo',25)">Agregar</button></div></div>
 
-<div class="menu-item">
-<span>Revueltas - 90 LPS</span>
-<div class="controls" id="Revueltas-control">
-<button class="add-btn" onclick="addItem('Revueltas',90)">Agregar</button>
-</div>
 </div>
 
-<div class="menu-item">
-<span>Quesillo - 80 LPS</span>
-<div class="controls" id="Quesillo-control">
-<button class="add-btn" onclick="addItem('Quesillo',80)">Agregar</button>
+<!-- BALEADAS -->
+<div class="category">
+<h2>Baleadas</h2>
+
+<div class="menu-item"><span>Sencilla – 25 LPS</span><div class="controls" id="Sencilla-control"><button class="add-btn" onclick="addItem('Sencilla',25)">Agregar</button></div></div>
+<div class="menu-item"><span>Huevo – 30 LPS</span><div class="controls" id="Huevo-control"><button class="add-btn" onclick="addItem('Huevo',30)">Agregar</button></div></div>
+<div class="menu-item"><span>Sencilla Pollo – 40 LPS</span><div class="controls" id="SencillaPollo-control"><button class="add-btn" onclick="addItem('Sencilla Pollo',40)">Agregar</button></div></div>
+<div class="menu-item"><span>Huevo Pollo – 50 LPS</span><div class="controls" id="HuevoPollo-control"><button class="add-btn" onclick="addItem('Huevo Pollo',50)">Agregar</button></div></div>
+<div class="menu-item"><span>Sencilla Chorizo – 40 LPS</span><div class="controls" id="SencillaChorizo-control"><button class="add-btn" onclick="addItem('Sencilla Chorizo',40)">Agregar</button></div></div>
+<div class="menu-item"><span>Huevo Chorizo – 50 LPS</span><div class="controls" id="HuevoChorizo-control"><button class="add-btn" onclick="addItem('Huevo Chorizo',50)">Agregar</button></div></div>
+<div class="menu-item"><span>Sencilla Embutido – 40 LPS</span><div class="controls" id="SencillaEmbutido-control"><button class="add-btn" onclick="addItem('Sencilla Embutido',40)">Agregar</button></div></div>
+<div class="menu-item"><span>Huevo Embutido – 50 LPS</span><div class="controls" id="HuevoEmbutido-control"><button class="add-btn" onclick="addItem('Huevo Embutido',50)">Agregar</button></div></div>
+
 </div>
-</div>
+
+<!-- BEBIDAS -->
+<div class="category">
+<h2>Bebidas</h2>
+
+<div class="menu-item"><span>Horchata – 35 LPS</span><div class="controls" id="Horchata-control"><button class="add-btn" onclick="addItem('Horchata',35)">Agregar</button></div></div>
+<div class="menu-item"><span>Limonada – 40 LPS</span><div class="controls" id="Limonada-control"><button class="add-btn" onclick="addItem('Limonada',40)">Agregar</button></div></div>
+<div class="menu-item"><span>Jamaica – 40 LPS</span><div class="controls" id="Jamaica-control"><button class="add-btn" onclick="addItem('Jamaica',40)">Agregar</button></div></div>
 
 </div>
 
 </section>
 
-<!-- CART -->
 <div class="cart" id="cart">
 <div class="cart-header">
 <h2>🛒 Tu Pedido</h2>
@@ -241,7 +250,6 @@ Total: <span id="cartTotal">0</span> LPS
 </div>
 
 <script>
-
 let cart={};
 
 function toggleCart(){
@@ -265,13 +273,13 @@ renderMenuControl(name);
 }
 
 function resetControl(name){
-document.getElementById(name+"-control").innerHTML=
+document.getElementById(name.replace(/\s/g,'')+"-control").innerHTML=
 `<button class="add-btn" onclick="addItem('${name}',${cart[name]?.price||0})">Agregar</button>`;
 }
 
 function renderMenuControl(name){
 if(!cart[name]) return;
-document.getElementById(name+"-control").innerHTML=
+document.getElementById(name.replace(/\s/g,'')+"-control").innerHTML=
 `<div class="qty-controls">
 <button onclick="changeQty('${name}',-1)">−</button>
 ${cart[name].qty}
@@ -320,40 +328,23 @@ orderText+=`• ${cart[item].qty} ${item}\n`;
 total+=cart[item].price*cart[item].qty;
 }
 
-let emailBody=
-`Nuevo Pedido - Pupusas y Más\n\n`+
-`Nombre: ${nombre}\n`+
-`Teléfono: ${telefono}\n`+
-`Recoger en: ${pickup}\n\n`+
-`Pedido:\n${orderText}\n`+
-`Total: ${total} LPS`;
-
 fetch("https://formsubmit.co/ajax/pupusasymashn@gmail.com",{
 method:"POST",
 headers:{'Content-Type':'application/json'},
 body:JSON.stringify({
 name:nombre,
-message:emailBody,
+message:orderText,
 _subject:"Nuevo Pedido - Pupusas y Más"
 })
 });
 
-let mensaje=
-`🛎️ Nuevo Pedido - Pupusas y Más%0A%0A`+
-`👤 Nombre: ${nombre}%0A`+
-`📞 Teléfono: ${telefono}%0A`+
-`⏰ Recoger en: ${pickup}%0A%0A`+
-`📝 Pedido:%0A${encodeURIComponent(orderText)}%0A`+
-`💰 Total: ${total} LPS`;
-
-window.open(`https://wa.me/50487809196?text=${mensaje}`,'_blank');
+window.open(`https://wa.me/50487809196?text=${encodeURIComponent(orderText)}`,'_blank');
 
 document.getElementById("successMessage").style.display="block";
 toggleCart();
 cart={};
 renderCart();
 }
-
 </script>
 
 </body>
