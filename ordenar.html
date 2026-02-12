@@ -12,7 +12,7 @@
 body {
     margin: 0;
     font-family: 'Poppins', sans-serif;
-    background-color: #f5efe6;
+    background: #f5efe6;
     color: #3b2f2f;
 }
 
@@ -39,70 +39,98 @@ header img {
 }
 
 section {
-    padding: 20px;
-    max-width: 700px;
+    max-width: 800px;
     margin: auto;
+    padding: 20px;
 }
 
 h1 {
     font-family: 'Playfair Display', serif;
     text-align: center;
-    margin-bottom: 30px;
 }
 
 .menu-item {
     display: flex;
     justify-content: space-between;
-    margin: 12px 0;
+    margin: 20px 0;
+    align-items: center;
 }
 
-.menu-item input {
-    width: 70px;
-    padding: 6px;
+.menu-item button {
+    background: #d6b98c;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+/* CART PANEL */
+.cart {
+    position: fixed;
+    top: 0;
+    right: -400px;
+    width: 350px;
+    height: 100%;
+    background: white;
+    box-shadow: -4px 0 20px rgba(0,0,0,0.15);
+    padding: 20px;
+    transition: 0.3s;
+    overflow-y: auto;
+}
+
+.cart.active {
+    right: 0;
+}
+
+.cart h2 {
+    text-align: center;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0;
+}
+
+.cart-total {
+    font-weight: 600;
+    margin-top: 20px;
+}
+
+.checkout-btn {
+    width: 100%;
+    padding: 12px;
+    margin-top: 20px;
+    background: #d6b98c;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.cart-toggle {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    background: #d6b98c;
+    padding: 15px 20px;
+    border-radius: 30px;
+    font-weight: 600;
+    cursor: pointer;
 }
 
 input, select {
     width: 100%;
-    padding: 10px;
-    margin: 8px 0 20px 0;
+    padding: 8px;
+    margin: 8px 0;
     border: 1px solid #d6b98c;
-    border-radius: 8px;
-}
-
-.total-box {
-    font-size: 18px;
-    font-weight: 600;
-    margin-bottom: 20px;
-}
-
-button {
-    width: 100%;
-    padding: 14px;
-    background: #d6b98c;
-    border: none;
-    border-radius: 8px;
-    font-weight: 600;
-    cursor: pointer;
+    border-radius: 6px;
 }
 
 .success-message {
     display: none;
     text-align: center;
-    padding: 40px;
-    font-size: 20px;
+    padding: 30px;
     font-weight: 600;
-}
-
-.footer {
-    background: #3b2f2f;
-    color: white;
-    text-align: center;
-    padding: 25px;
-    margin-top: 40px;
-}
-
-@media(max-width:768px){
-    header img { height: 110px; }
 }
 
 </style>
@@ -112,113 +140,156 @@ button {
 
 <header>
     <a href="index.html">
-        <img src="logo.png" alt="Pupusas y Más Logo">
+        <img src="logo.png" alt="Logo">
     </a>
 </header>
 
 <a href="menu.html" class="back-button">← Volver al Menú</a>
 
-<section id="orderSection">
-    <h1>Haz Tu Pedido</h1>
+<section>
+<h1>Haz Tu Pedido</h1>
 
-    <form action="https://formsubmit.co/pupusasymashn@gmail.com" method="POST" onsubmit="handleOrder(event)">
-
-        <input type="hidden" name="_captcha" value="false">
-        <input type="hidden" name="_subject" value="Nuevo Pedido - Pupusas y Más">
-
-        <div class="menu-item">
-            <span>Pupusas (80 LPS)</span>
-            <input type="number" name="Pupusas" min="0" value="0" data-price="80" onchange="calculateTotal()">
-        </div>
-
-        <div class="menu-item">
-            <span>Revueltas (90 LPS)</span>
-            <input type="number" name="Revueltas" min="0" value="0" data-price="90" onchange="calculateTotal()">
-        </div>
-
-        <div class="menu-item">
-            <span>Baleadas Sencillas (25 LPS)</span>
-            <input type="number" name="Baleadas" min="0" value="0" data-price="25" onchange="calculateTotal()">
-        </div>
-
-        <div class="menu-item">
-            <span>Horchata (35 LPS)</span>
-            <input type="number" name="Horchata" min="0" value="0" data-price="35" onchange="calculateTotal()">
-        </div>
-
-        <div class="total-box">
-            Total: <span id="total">0</span> LPS
-        </div>
-
-        <label>Nombre</label>
-        <input type="text" name="Nombre" id="nombre" required>
-
-        <label>Teléfono</label>
-        <input type="tel" name="Telefono" id="telefono" required>
-
-        <label>Hora de recogida</label>
-        <select name="Hora" id="pickupTime" required>
-            <option value="">Selecciona hora</option>
-            <option>15 minutos</option>
-            <option>30 minutos</option>
-            <option>45 minutos</option>
-            <option>1 hora</option>
-        </select>
-
-        <button type="submit">Enviar Pedido</button>
-
-    </form>
-</section>
-
-<div id="successMessage" class="success-message">
-    ✅ Pedido enviado correctamente.<br>
-    Revisa WhatsApp para confirmar.
+<div class="menu-item">
+    <span>Pupusas (80 LPS)</span>
+    <button onclick="addToCart('Pupusas',80)">Agregar</button>
 </div>
 
-<div class="footer">
-    © 2026 Pupusas y Más | Est. 2019
+<div class="menu-item">
+    <span>Revueltas (90 LPS)</span>
+    <button onclick="addToCart('Revueltas',90)">Agregar</button>
+</div>
+
+<div class="menu-item">
+    <span>Baleadas (25 LPS)</span>
+    <button onclick="addToCart('Baleadas',25)">Agregar</button>
+</div>
+
+<div class="menu-item">
+    <span>Horchata (35 LPS)</span>
+    <button onclick="addToCart('Horchata',35)">Agregar</button>
+</div>
+
+</section>
+
+<!-- CART -->
+<div class="cart" id="cart">
+    <h2>🛒 Tu Pedido</h2>
+    <div id="cartItems"></div>
+    <div class="cart-total">
+        Total: <span id="cartTotal">0</span> LPS
+    </div>
+
+    <hr>
+
+    <input type="text" id="nombre" placeholder="Nombre" required>
+    <input type="tel" id="telefono" placeholder="Teléfono" required>
+
+    <select id="pickupTime">
+        <option value="">Hora de recogida</option>
+        <option>15 minutos</option>
+        <option>30 minutos</option>
+        <option>45 minutos</option>
+        <option>1 hora</option>
+    </select>
+
+    <button class="checkout-btn" onclick="checkout()">Finalizar Pedido</button>
+</div>
+
+<div class="cart-toggle" onclick="toggleCart()">🛒 Ver Carrito</div>
+
+<div id="successMessage" class="success-message">
+    ✅ Pedido enviado correctamente.
 </div>
 
 <script>
 
-function calculateTotal() {
-    let inputs = document.querySelectorAll("input[type='number']");
-    let total = 0;
-    inputs.forEach(input => {
-        total += input.value * input.dataset.price;
-    });
-    document.getElementById("total").innerText = total;
+let cart = [];
+
+function toggleCart() {
+    document.getElementById("cart").classList.toggle("active");
 }
 
-function handleOrder(event) {
+function addToCart(name, price) {
+    let item = cart.find(i => i.name === name);
+    if(item){
+        item.quantity++;
+    } else {
+        cart.push({name, price, quantity:1});
+    }
+    renderCart();
+}
+
+function renderCart() {
+    let cartItems = document.getElementById("cartItems");
+    cartItems.innerHTML = "";
+    let total = 0;
+
+    cart.forEach(item => {
+        total += item.price * item.quantity;
+        cartItems.innerHTML += `
+            <div class="cart-item">
+                ${item.quantity} ${item.name}
+                <span>${item.price * item.quantity} LPS</span>
+            </div>
+        `;
+    });
+
+    document.getElementById("cartTotal").innerText = total;
+}
+
+function checkout() {
 
     let nombre = document.getElementById("nombre").value;
     let telefono = document.getElementById("telefono").value;
     let pickup = document.getElementById("pickupTime").value;
-    let total = document.getElementById("total").innerText;
 
-    let inputs = document.querySelectorAll("input[type='number']");
+    if(cart.length === 0){
+        alert("Agrega productos al carrito");
+        return;
+    }
+
     let orderDetails = "";
+    let total = 0;
 
-    inputs.forEach(input => {
-        if (input.value > 0) {
-            let itemName = input.parentElement.querySelector("span").innerText;
-            orderDetails += `• ${input.value} ${itemName}%0A`;
-        }
+    cart.forEach(item => {
+        orderDetails += `• ${item.quantity} ${item.name}\n`;
+        total += item.price * item.quantity;
     });
 
+    let emailBody =
+        `Nuevo Pedido - Pupusas y Más\n\n` +
+        `Nombre: ${nombre}\n` +
+        `Teléfono: ${telefono}\n` +
+        `Recoger en: ${pickup}\n\n` +
+        `Pedido:\n${orderDetails}\n` +
+        `Total: ${total} LPS`;
+
+    // EMAIL SEND (FormSubmit background)
+    fetch("https://formsubmit.co/ajax/pupusasymashn@gmail.com", {
+        method: "POST",
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            name: nombre,
+            message: emailBody,
+            _subject: "Nuevo Pedido - Pupusas y Más"
+        })
+    });
+
+    // WHATSAPP MESSAGE
     let mensaje =
         `🛎️ Nuevo Pedido - Pupusas y Más%0A%0A` +
         `👤 Nombre: ${nombre}%0A` +
         `📞 Teléfono: ${telefono}%0A` +
         `⏰ Recoger en: ${pickup}%0A%0A` +
-        `📝 Pedido:%0A${orderDetails}%0A` +
+        `📝 Pedido:%0A${encodeURIComponent(orderDetails)}%0A` +
         `💰 Total: ${total} LPS`;
 
     window.open(`https://wa.me/50487809196?text=${mensaje}`, '_blank');
 
-    document.getElementById("orderSection").style.display = "none";
     document.getElementById("successMessage").style.display = "block";
+    document.getElementById("cart").classList.remove("active");
+    cart = [];
+    renderCart();
 }
 
 </script>
