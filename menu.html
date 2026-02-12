@@ -211,6 +211,29 @@ font-weight:600;
 text-align:center;
 margin-top:10px;
 }
+
+/* CONFIRMATION BOX */
+.confirmation-box{
+position:fixed;
+top:50%;
+left:50%;
+transform:translate(-50%, -50%) scale(0.9);
+background:white;
+padding:25px 35px;
+border-radius:12px;
+box-shadow:0 10px 30px rgba(0,0,0,0.2);
+font-family:'Poppins',sans-serif;
+font-weight:500;
+opacity:0;
+pointer-events:none;
+transition:all 0.3s ease;
+z-index:2000;
+}
+
+.confirmation-box.active{
+opacity:1;
+transform:translate(-50%, -50%) scale(1);
+}
 </style>
 </head>
 
@@ -222,6 +245,8 @@ margin-top:10px;
 
 <section>
 <h1>Nuestro Menú</h1>
+
+<!-- FULL MENU (ALL CATEGORIES RESTORED) -->
 
 <!-- PUPUSAS -->
 <div class="category">
@@ -277,17 +302,11 @@ margin-top:10px;
 
 </section>
 
-<div class="cart-float" onclick="toggleCart()">
-🛒 Carrito <span class="cart-count" id="cartCount">0</span>
-</div>
-
+<div class="cart-float" onclick="toggleCart()">🛒 Carrito <span class="cart-count" id="cartCount">0</span></div>
 <div class="overlay" id="overlay" onclick="toggleCart()"></div>
 
 <div class="cart" id="cart">
-<div class="cart-header">
-<h2>Tu Pedido</h2>
-<div class="close-cart" onclick="toggleCart()">✕</div>
-</div>
+<div class="cart-header"><h2>Tu Pedido</h2><div class="close-cart" onclick="toggleCart()">✕</div></div>
 <div id="cartItems"></div>
 <div class="cart-total">Total: <span id="cartTotal">0</span> LPS</div>
 <hr>
@@ -306,141 +325,25 @@ margin-top:10px;
 <div class="closed-message" id="closedMessage"></div>
 </div>
 
+<div id="confirmationBox" class="confirmation-box">
+✅ Pedido enviado correctamente.
+</div>
+
 <script>
 let cart=JSON.parse(localStorage.getItem("cart"))||{};
-
-function saveCart(){ localStorage.setItem("cart",JSON.stringify(cart)); }
-
-function toggleCart(){
-document.getElementById("cart").classList.toggle("active");
-document.getElementById("overlay").classList.toggle("active");
-}
-
-function getId(name){
-return name.replace(/[^a-zA-Z0-9]/g,'')+"-control";
-}
-
-function addItem(name,price){
-cart[name]={price:price,qty:1};
-renderMenuControl(name);
-renderCart();
-saveCart();
-}
-
-function changeQty(name,amount){
-cart[name].qty+=amount;
-if(cart[name].qty<=0){
-delete cart[name];
-resetControl(name);
-}
-renderCart();
-renderMenuControl(name);
-saveCart();
-}
-
-function resetControl(name){
-let id=getId(name);
-document.getElementById(id).innerHTML=
-`<button class="add-btn" onclick="addItem('${name}',${cart[name]?.price||0})">Agregar</button>`;
-}
-
-function renderMenuControl(name){
-if(!cart[name]) return;
-let id=getId(name);
-document.getElementById(id).innerHTML=
-`<div class="qty-controls">
-<button onclick="changeQty('${name}',-1)">−</button>
-${cart[name].qty}
-<button onclick="changeQty('${name}',1)">+</button>
-</div>`;
-}
-
-function renderCart(){
-let cartItems=document.getElementById("cartItems");
-cartItems.innerHTML="";
-let total=0;
-let count=0;
-
-for(let item in cart){
-total+=cart[item].price*cart[item].qty;
-count+=cart[item].qty;
-
-cartItems.innerHTML+=`
-<div class="cart-item">
-${cart[item].qty} ${item}
-<span>${cart[item].price*cart[item].qty} LPS</span>
-<span class="remove" onclick="changeQty('${item}',-999)">🗑</span>
-</div>`;
-}
-
-document.getElementById("cartTotal").innerText=total;
-document.getElementById("cartCount").innerText=count;
-}
-
-function isOpen(){
-let now=new Date();
-let day=now.getDay();
-if(day===0) return false;
-let current=now.getHours()*60+now.getMinutes();
-let mOpen=7*60+30, mClose=13*60+30;
-let eOpen=17*60, eClose=21*60;
-return (current>=mOpen && current<=mClose) || (current>=eOpen && current<=eClose);
-}
-
-function checkHours(){
-if(!isOpen()){
-document.getElementById("checkoutBtn").disabled=true;
-document.getElementById("closedMessage").innerText="Estamos cerrados en este momento.";
-}
-}
-
-function checkout(){
-if(!isOpen()){ alert("Estamos cerrados."); return; }
-
-let nombre=document.getElementById("nombre").value;
-let telefono=document.getElementById("telefono").value;
-let pickup=document.getElementById("pickupTime").value;
-let notas=document.getElementById("notas").value;
-
-let total=0;
-let orderText="";
-
-for(let item in cart){
-orderText+=`• ${cart[item].qty} ${item}\n`;
-total+=cart[item].price*cart[item].qty;
-}
-
-let message=
-`🛎️ Nuevo Pedido\n\n`+
-`👤 ${nombre}\n`+
-`📞 ${telefono}\n`+
-`⏰ ${pickup}\n\n`+
-`📝 Pedido:\n${orderText}\n\n`+
-`🗒 Notas: ${notas}\n\n`+
-`💰 Total: ${total} LPS`;
-
-fetch("https://formsubmit.co/ajax/pupusasymashn@gmail.com",{
-method:"POST",
-headers:{'Content-Type':'application/json'},
-body:JSON.stringify({
-name:nombre,
-message:message,
-_subject:"Nuevo Pedido - Pupusas y Más"
-})
-});
-
-window.open(`https://wa.me/50487809196?text=${encodeURIComponent(message)}`,'_blank');
-
-localStorage.removeItem("cart");
-cart={};
-renderCart();
-toggleCart();
-alert("Pedido enviado correctamente.");
-}
-
-renderCart();
-checkHours();
-Object.keys(cart).forEach(item=>renderMenuControl(item));
+function saveCart(){localStorage.setItem("cart",JSON.stringify(cart));}
+function toggleCart(){document.getElementById("cart").classList.toggle("active");document.getElementById("overlay").classList.toggle("active");}
+function getId(name){return name.replace(/[^a-zA-Z0-9]/g,'')+"-control";}
+function addItem(name,price){cart[name]={price:price,qty:1};renderMenuControl(name);renderCart();saveCart();}
+function changeQty(name,amount){cart[name].qty+=amount;if(cart[name].qty<=0){delete cart[name];resetControl(name);}renderCart();renderMenuControl(name);saveCart();}
+function resetControl(name){let id=getId(name);document.getElementById(id).innerHTML=`<button class="add-btn" onclick="addItem('${name}',${cart[name]?.price||0})">Agregar</button>`;}
+function renderMenuControl(name){if(!cart[name])return;let id=getId(name);document.getElementById(id).innerHTML=`<div class="qty-controls"><button onclick="changeQty('${name}',-1)">−</button>${cart[name].qty}<button onclick="changeQty('${name}',1)">+</button></div>`;}
+function renderCart(){let c=document.getElementById("cartItems");c.innerHTML="";let total=0,count=0;for(let item in cart){total+=cart[item].price*cart[item].qty;count+=cart[item].qty;c.innerHTML+=`<div class="cart-item">${cart[item].qty} ${item}<span>${cart[item].price*cart[item].qty} LPS</span><span class="remove" onclick="changeQty('${item}',-999)">🗑</span></div>`;}document.getElementById("cartTotal").innerText=total;document.getElementById("cartCount").innerText=count;}
+function isOpen(){let n=new Date();let d=n.getDay();if(d===0)return false;let c=n.getHours()*60+n.getMinutes();return(c>=450&&c<=810)||(c>=1020&&c<=1260);}
+function checkHours(){if(!isOpen()){document.getElementById("checkoutBtn").disabled=true;document.getElementById("closedMessage").innerText="Estamos cerrados en este momento.";}}
+function showConfirmation(){const box=document.getElementById("confirmationBox");box.classList.add("active");setTimeout(()=>{box.classList.remove("active");},3000);}
+function checkout(){if(!isOpen()){alert("Estamos cerrados.");return;}let nombre=document.getElementById("nombre").value;let telefono=document.getElementById("telefono").value;let pickup=document.getElementById("pickupTime").value;let notas=document.getElementById("notas").value;let total=0;let orderText="";for(let item in cart){orderText+=`• ${cart[item].qty} ${item}\n`;total+=cart[item].price*cart[item].qty;}let message=`🛎️ Nuevo Pedido\n\n👤 ${nombre}\n📞 ${telefono}\n⏰ ${pickup}\n\n📝 Pedido:\n${orderText}\n\n🗒 Notas: ${notas}\n\n💰 Total: ${total} LPS`;fetch("https://formsubmit.co/ajax/pupusasymashn@gmail.com",{method:"POST",headers:{'Content-Type':'application/json'},body:JSON.stringify({name:nombre,message:message,_subject:"Nuevo Pedido - Pupusas y Más"})});window.open(`https://wa.me/50487809196?text=${encodeURIComponent(message)}`,'_blank');localStorage.removeItem("cart");cart={};renderCart();toggleCart();showConfirmation();}
+renderCart();checkHours();Object.keys(cart).forEach(item=>renderMenuControl(item));
 </script>
 
 </body>
