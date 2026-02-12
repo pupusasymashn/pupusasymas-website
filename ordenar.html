@@ -16,7 +16,6 @@ body {
     color: #3b2f2f;
 }
 
-/* HEADER */
 header {
     background: white;
     padding: 10px 0;
@@ -28,7 +27,6 @@ header img {
     height: 140px;
 }
 
-/* BACK BUTTON */
 .back-button {
     display: inline-block;
     margin: 20px;
@@ -40,13 +38,8 @@ header img {
     font-weight: 600;
 }
 
-.back-button:hover {
-    opacity: 0.9;
-}
-
-/* FORM SECTION */
 section {
-    padding: 40px 20px 80px 20px;
+    padding: 20px;
     max-width: 700px;
     margin: auto;
 }
@@ -54,20 +47,31 @@ section {
 h1 {
     font-family: 'Playfair Display', serif;
     text-align: center;
-    margin-bottom: 40px;
+    margin-bottom: 30px;
 }
 
-label {
-    font-weight: 500;
+.menu-item {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0;
 }
 
-input, textarea {
+.menu-item input {
+    width: 60px;
+}
+
+input, select {
     width: 100%;
-    padding: 12px;
+    padding: 10px;
     margin: 8px 0 20px 0;
     border: 1px solid #d6b98c;
     border-radius: 8px;
-    font-family: 'Poppins', sans-serif;
+}
+
+.total-box {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 20px;
 }
 
 button {
@@ -80,20 +84,20 @@ button {
     cursor: pointer;
 }
 
-button:hover {
-    opacity: 0.9;
+.success-message {
+    display: none;
+    text-align: center;
+    padding: 40px;
+    font-size: 20px;
+    font-weight: 600;
 }
 
-/* FOOTER */
 .footer {
     background: #3b2f2f;
     color: white;
     text-align: center;
     padding: 25px;
-}
-
-@media(max-width:768px){
-    header img { height: 110px; }
+    margin-top: 40px;
 }
 
 </style>
@@ -109,47 +113,91 @@ button:hover {
 
 <a href="menu.html" class="back-button">← Volver al Menú</a>
 
-<section>
+<section id="orderSection">
     <h1>Haz Tu Pedido</h1>
 
-    <form action="https://formsubmit.co/pupusasymashn@gmail.com" method="POST" target="_blank" onsubmit="sendWhatsApp()">
+    <form onsubmit="handleOrder(event)">
 
-        <input type="hidden" name="_captcha" value="false">
-        <input type="hidden" name="_subject" value="Nuevo Pedido - Pupusas y Más">
+        <div class="menu-item">
+            <span>Pupusas (80 LPS)</span>
+            <input type="number" min="0" value="0" data-price="80" onchange="calculateTotal()">
+        </div>
+
+        <div class="menu-item">
+            <span>Revueltas (90 LPS)</span>
+            <input type="number" min="0" value="0" data-price="90" onchange="calculateTotal()">
+        </div>
+
+        <div class="menu-item">
+            <span>Baleadas Sencillas (25 LPS)</span>
+            <input type="number" min="0" value="0" data-price="25" onchange="calculateTotal()">
+        </div>
+
+        <div class="menu-item">
+            <span>Horchata (35 LPS)</span>
+            <input type="number" min="0" value="0" data-price="35" onchange="calculateTotal()">
+        </div>
+
+        <div class="total-box">
+            Total: <span id="total">0</span> LPS
+        </div>
 
         <label>Nombre</label>
-        <input type="text" name="Nombre" id="nombre" required>
+        <input type="text" id="nombre" required>
 
         <label>Teléfono</label>
-        <input type="tel" name="Telefono" id="telefono" required>
+        <input type="tel" id="telefono" required>
 
-        <label>Pedido</label>
-        <textarea name="Pedido" id="pedido" rows="4" placeholder="Ej: 2 Ordenes de Pupusas Revueltas, 1 Horchata" required></textarea>
-
-        <label>Notas adicionales</label>
-        <textarea name="Notas" id="notas" rows="3"></textarea>
+        <label>Hora de recogida</label>
+        <select id="pickupTime" required>
+            <option value="">Selecciona hora</option>
+            <option>15 minutos</option>
+            <option>30 minutos</option>
+            <option>45 minutos</option>
+            <option>1 hora</option>
+        </select>
 
         <button type="submit">Enviar Pedido</button>
 
     </form>
-
 </section>
+
+<div id="successMessage" class="success-message">
+    ✅ Pedido enviado correctamente.<br>
+    Te contactaremos pronto.
+</div>
 
 <div class="footer">
     © 2026 Pupusas y Más | Est. 2019
 </div>
 
 <script>
-function sendWhatsApp() {
+
+function calculateTotal() {
+    let inputs = document.querySelectorAll("input[type='number']");
+    let total = 0;
+    inputs.forEach(input => {
+        total += input.value * input.dataset.price;
+    });
+    document.getElementById("total").innerText = total;
+}
+
+function handleOrder(event) {
+    event.preventDefault();
+
     let nombre = document.getElementById("nombre").value;
     let telefono = document.getElementById("telefono").value;
-    let pedido = document.getElementById("pedido").value;
-    let notas = document.getElementById("notas").value;
+    let pickup = document.getElementById("pickupTime").value;
+    let total = document.getElementById("total").innerText;
 
-    let mensaje = `Nuevo Pedido:%0A%0ANombre: ${nombre}%0ATeléfono: ${telefono}%0APedido: ${pedido}%0ANotas: ${notas}`;
+    let mensaje = `Nuevo Pedido:%0A%0ANombre: ${nombre}%0ATeléfono: ${telefono}%0AHora: ${pickup}%0ATotal: ${total} LPS`;
 
     window.open(`https://wa.me/50487809196?text=${mensaje}`, '_blank');
+
+    document.getElementById("orderSection").style.display = "none";
+    document.getElementById("successMessage").style.display = "block";
 }
+
 </script>
 
 </body>
