@@ -16,19 +16,37 @@ body {
     color: #3b2f2f;
 }
 
+/* HEADER */
 header {
     background: white;
-    padding: 20px 0;
+    padding: 10px 0;
     text-align: center;
     box-shadow: 0 2px 10px rgba(0,0,0,0.05);
 }
 
 header img {
-    height: 95px;
+    height: 140px;
 }
 
+/* BACK BUTTON */
+.back-button {
+    display: inline-block;
+    margin: 20px;
+    padding: 10px 20px;
+    background: #d6b98c;
+    color: #3b2f2f;
+    text-decoration: none;
+    border-radius: 20px;
+    font-weight: 600;
+}
+
+.back-button:hover {
+    opacity: 0.9;
+}
+
+/* FORM SECTION */
 section {
-    padding: 60px 20px;
+    padding: 40px 20px 80px 20px;
     max-width: 700px;
     margin: auto;
 }
@@ -45,10 +63,10 @@ label {
 
 input, textarea {
     width: 100%;
-    padding: 10px;
+    padding: 12px;
     margin: 8px 0 20px 0;
     border: 1px solid #d6b98c;
-    border-radius: 5px;
+    border-radius: 8px;
     font-family: 'Poppins', sans-serif;
 }
 
@@ -57,7 +75,7 @@ button {
     padding: 14px;
     background: #d6b98c;
     border: none;
-    border-radius: 5px;
+    border-radius: 8px;
     font-weight: 600;
     cursor: pointer;
 }
@@ -66,12 +84,16 @@ button:hover {
     opacity: 0.9;
 }
 
+/* FOOTER */
 .footer {
     background: #3b2f2f;
     color: white;
     text-align: center;
     padding: 25px;
-    margin-top: 60px;
+}
+
+@media(max-width:768px){
+    header img { height: 110px; }
 }
 
 </style>
@@ -80,8 +102,12 @@ button:hover {
 <body>
 
 <header>
-    <img src="logo.png" alt="Pupusas y Más Logo">
+    <a href="index.html">
+        <img src="logo.png" alt="Pupusas y Más Logo">
+    </a>
 </header>
+
+<a href="menu.html" class="back-button">← Volver al Menú</a>
 
 <section>
     <h1>Haz Tu Pedido</h1>
