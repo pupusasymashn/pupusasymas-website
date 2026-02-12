@@ -53,12 +53,12 @@ h1 {
 .menu-item {
     display: flex;
     justify-content: space-between;
-    margin: 10px 0;
+    margin: 12px 0;
 }
 
 .menu-item input {
     width: 70px;
-    padding: 5px;
+    padding: 6px;
 }
 
 input, select {
@@ -197,7 +197,23 @@ function handleOrder(event) {
     let pickup = document.getElementById("pickupTime").value;
     let total = document.getElementById("total").innerText;
 
-    let mensaje = `Nuevo Pedido:%0A%0ANombre: ${nombre}%0ATeléfono: ${telefono}%0AHora: ${pickup}%0ATotal: ${total} LPS`;
+    let inputs = document.querySelectorAll("input[type='number']");
+    let orderDetails = "";
+
+    inputs.forEach(input => {
+        if (input.value > 0) {
+            let itemName = input.parentElement.querySelector("span").innerText;
+            orderDetails += `• ${input.value} ${itemName}%0A`;
+        }
+    });
+
+    let mensaje =
+        `🛎️ Nuevo Pedido - Pupusas y Más%0A%0A` +
+        `👤 Nombre: ${nombre}%0A` +
+        `📞 Teléfono: ${telefono}%0A` +
+        `⏰ Recoger en: ${pickup}%0A%0A` +
+        `📝 Pedido:%0A${orderDetails}%0A` +
+        `💰 Total: ${total} LPS`;
 
     window.open(`https://wa.me/50487809196?text=${mensaje}`, '_blank');
 
