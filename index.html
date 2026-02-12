@@ -20,19 +20,26 @@ header {
     position: fixed;
     width: 100%;
     background: rgba(122,31,31,0.95);
-    color: white;
     padding: 15px 0;
     text-align: center;
     z-index: 1000;
 }
 
-header h1 {
-    margin: 0;
-    font-family: 'Playfair Display', serif;
+header img {
+    height: 60px;
+}
+
+.language-toggle {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    color: white;
+    cursor: pointer;
+    font-size: 14px;
 }
 
 nav {
-    margin-top: 5px;
+    margin-top: 10px;
 }
 
 nav a {
@@ -42,17 +49,9 @@ nav a {
     font-weight: 500;
 }
 
-.language-toggle {
-    position: absolute;
-    right: 20px;
-    top: 20px;
-    cursor: pointer;
-    font-size: 14px;
-}
-
 .hero {
     height: 100vh;
-    background: url('https://images.unsplash.com/photo-1604908176997-125f25cc6f33') center/cover no-repeat;
+    background: url('pupusa1.jpg') center/cover no-repeat;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -62,8 +61,8 @@ nav a {
 }
 
 .hero-content {
-    background: rgba(0,0,0,0.55);
-    padding: 40px;
+    background: rgba(0,0,0,0.6);
+    padding: 50px;
     border-radius: 10px;
 }
 
@@ -83,7 +82,7 @@ nav a {
 }
 
 section {
-    padding: 80px 20px;
+    padding: 90px 20px;
     max-width: 1000px;
     margin: auto;
 }
@@ -126,11 +125,10 @@ footer {
 <body>
 
 <header>
-    <h1>Pupusas y Más</h1>
+    <img src="logo.png" alt="Pupusas y Más Logo">
     <div class="language-toggle" onclick="toggleLanguage()">ES | EN</div>
     <nav>
         <a href="#about">Nosotros</a>
-        <a href="#menu">Menú</a>
         <a href="#gallery">Galería</a>
         <a href="#contact">Contacto</a>
     </nav>
@@ -155,9 +153,9 @@ footer {
 <section id="gallery">
     <h2>Galería</h2>
     <div class="gallery">
-        <img src="https://images.unsplash.com/photo-1617196034796-73dfa7b1fd56">
-        <img src="https://images.unsplash.com/photo-1604909053197-1e9fefbd7b8d">
-        <img src="https://images.unsplash.com/photo-1625944194933-4f3e8dc63c2f">
+        <img src="pupusa1.jpg">
+        <img src="pupusa2.jpg">
+        <img src="pupusa1.jpg">
     </div>
 </section>
 
