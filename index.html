@@ -5,73 +5,121 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Pupusas y Más | Est. 2019</title>
 
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+
 <style>
+
 body {
     margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: #fff8f2;
-    color: #333;
+    font-family: 'Poppins', sans-serif;
+    background-color: #fff6ed;
+    color: #3b2f2f;
 }
 
 header {
-    background-color: #7a1f1f;
+    position: fixed;
+    width: 100%;
+    background: rgba(122,31,31,0.95);
     color: white;
-    padding: 20px;
+    padding: 15px 0;
     text-align: center;
+    z-index: 1000;
 }
 
 header h1 {
     margin: 0;
-    font-size: 40px;
+    font-family: 'Playfair Display', serif;
 }
 
 nav {
-    background-color: #b83232;
-    padding: 10px;
-    text-align: center;
+    margin-top: 5px;
 }
 
 nav a {
     color: white;
     margin: 0 15px;
     text-decoration: none;
-    font-weight: bold;
+    font-weight: 500;
+}
+
+.language-toggle {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.hero {
+    height: 100vh;
+    background: url('https://images.unsplash.com/photo-1604908176997-125f25cc6f33') center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    padding: 20px;
+}
+
+.hero-content {
+    background: rgba(0,0,0,0.55);
+    padding: 40px;
+    border-radius: 10px;
+}
+
+.hero h2 {
+    font-size: 40px;
+    font-family: 'Playfair Display', serif;
+}
+
+.button {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 30px;
+    background: #b83232;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
 }
 
 section {
-    padding: 50px 20px;
+    padding: 80px 20px;
     max-width: 1000px;
     margin: auto;
 }
 
-.hero {
+h2 {
+    font-family: 'Playfair Display', serif;
     text-align: center;
 }
 
-.hero h2 {
-    font-size: 32px;
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
 }
 
-.button {
-    background-color: #b83232;
-    color: white;
-    padding: 12px 25px;
-    text-decoration: none;
-    border-radius: 5px;
-    display: inline-block;
-    margin-top: 15px;
+.gallery img {
+    width: 100%;
+    border-radius: 8px;
 }
 
-.menu-item {
-    margin-bottom: 20px;
+.contact-info {
+    text-align: center;
+    line-height: 1.8;
 }
 
 footer {
-    background-color: #7a1f1f;
+    background: #7a1f1f;
     color: white;
     text-align: center;
     padding: 20px;
 }
+
+@media(max-width:768px){
+    .hero h2 { font-size: 28px; }
+}
+
 </style>
 </head>
 
@@ -79,64 +127,79 @@ footer {
 
 <header>
     <h1>Pupusas y Más</h1>
-    <p>Est. 2019</p>
+    <div class="language-toggle" onclick="toggleLanguage()">ES | EN</div>
+    <nav>
+        <a href="#about">Nosotros</a>
+        <a href="#menu">Menú</a>
+        <a href="#gallery">Galería</a>
+        <a href="#contact">Contacto</a>
+    </nav>
 </header>
 
-<nav>
-    <a href="#about">Nosotros</a>
-    <a href="#menu">Menú</a>
-    <a href="#catering">Catering</a>
-    <a href="#contact">Contacto</a>
-</nav>
-
-<section class="hero">
-    <h2>Sabor Salvadoreño Auténtico</h2>
-    <p>Pupusas hechas a mano todos los días con ingredientes frescos y tradicionales.</p>
-    <a href="#contact" class="button">Ordenar Ahora</a>
-</section>
+<div class="hero">
+    <div class="hero-content">
+        <h2 id="hero-title">Sabor Salvadoreño Auténtico</h2>
+        <p id="hero-text">Pupusas hechas a mano todos los días con ingredientes frescos y tradicionales.</p>
+        <a href="tel:+50487809196" class="button" id="order-btn">Ordenar Ahora</a>
+    </div>
+</div>
 
 <section id="about">
-    <h2>Sobre Nosotros</h2>
-    <p>En Pupusas y Más llevamos el auténtico sabor salvadoreño a tu mesa. 
-    Desde el 2019, servimos pupusas artesanales preparadas al momento con los mejores ingredientes.</p>
+    <h2 id="about-title">Sobre Nosotros</h2>
+    <p id="about-text">
+        Desde 2019, en Pupusas y Más llevamos el auténtico sabor salvadoreño a San Pedro Sula.
+        Cada pupusa es preparada al momento con recetas tradicionales y el cariño de casa.
+    </p>
 </section>
 
-<section id="menu">
-    <h2>Nuestro Menú</h2>
-
-    <div class="menu-item">
-        <h3>Pupusas</h3>
-        <p>Revuelta, Queso, Frijol con Queso, Chicharrón</p>
+<section id="gallery">
+    <h2>Galería</h2>
+    <div class="gallery">
+        <img src="https://images.unsplash.com/photo-1617196034796-73dfa7b1fd56">
+        <img src="https://images.unsplash.com/photo-1604909053197-1e9fefbd7b8d">
+        <img src="https://images.unsplash.com/photo-1625944194933-4f3e8dc63c2f">
     </div>
-
-    <div class="menu-item">
-        <h3>Desayunos</h3>
-        <p>Platos tradicionales salvadoreños</p>
-    </div>
-
-    <div class="menu-item">
-        <h3>Platos Típicos</h3>
-        <p>Yuca frita, Tamales, Empanadas</p>
-    </div>
-
-</section>
-
-<section id="catering">
-    <h2>Catering</h2>
-    <p>Ofrecemos servicio de catering para eventos, fiestas y reuniones corporativas. 
-    Contáctanos para paquetes personalizados.</p>
 </section>
 
 <section id="contact">
-    <h2>Contáctanos</h2>
-    <p>📍 Tu Ciudad Aquí</p>
-    <p>📞 (000) 000-0000</p>
-    <p>Síguenos en Instagram</p>
+    <h2 id="contact-title">Contáctanos</h2>
+    <div class="contact-info">
+        📍 San Pedro Sula - Jardines del Valle, Calle 9 10, 21102<br>
+        📞 <a href="tel:+50487809196">+504 8780-9196</a><br><br>
+        <iframe 
+            src="https://www.google.com/maps?q=San+Pedro+Sula+Jardines+del+Valle+Calle+9+10&output=embed"
+            width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy">
+        </iframe>
+    </div>
 </section>
 
 <footer>
-    <p>© 2026 Pupusas y Más | Est. 2019</p>
+    © 2026 Pupusas y Más | Est. 2019
 </footer>
+
+<script>
+let spanish = true;
+
+function toggleLanguage(){
+    spanish = !spanish;
+
+    if(!spanish){
+        document.getElementById("hero-title").innerText = "Authentic Salvadoran Flavor";
+        document.getElementById("hero-text").innerText = "Handmade pupusas prepared fresh daily with traditional ingredients.";
+        document.getElementById("order-btn").innerText = "Order Now";
+        document.getElementById("about-title").innerText = "About Us";
+        document.getElementById("about-text").innerText = "Since 2019, Pupusas y Más has brought authentic Salvadoran flavor to San Pedro Sula. Every pupusa is handmade with traditional recipes and homemade care.";
+        document.getElementById("contact-title").innerText = "Contact Us";
+    } else {
+        document.getElementById("hero-title").innerText = "Sabor Salvadoreño Auténtico";
+        document.getElementById("hero-text").innerText = "Pupusas hechas a mano todos los días con ingredientes frescos y tradicionales.";
+        document.getElementById("order-btn").innerText = "Ordenar Ahora";
+        document.getElementById("about-title").innerText = "Sobre Nosotros";
+        document.getElementById("about-text").innerText = "Desde 2019, en Pupusas y Más llevamos el auténtico sabor salvadoreño a San Pedro Sula. Cada pupusa es preparada al momento con recetas tradicionales y el cariño de casa.";
+        document.getElementById("contact-title").innerText = "Contáctanos";
+    }
+}
+</script>
 
 </body>
 </html>
