@@ -19,38 +19,46 @@ color:#3b2f2f;
 header{
 background:white;
 padding:15px 30px;
-text-align:center;
 box-shadow:0 2px 10px rgba(0,0,0,0.05);
+text-align:center;
+position:sticky;
+top:0;
+z-index:1000;
 }
 
 header img{
-height:140px;
+height:200px;
 cursor:pointer;
+transition:0.2s;
 }
 
-/* HERO WITH BACKGROUND IMAGE */
+header img:hover{
+transform:scale(1.03);
+}
+
+/* HERO */
 .hero{
-position:relative;
-height:400px;
+height:580px;
 display:flex;
 flex-direction:column;
 justify-content:center;
 align-items:center;
 text-align:center;
 color:white;
-background-image:url('pupusa1.jpg'); /* CHANGE IF NEEDED */
+background-image:url('pupusa1.jpg');
 background-size:cover;
 background-position:center;
+position:relative;
 }
 
 .hero::after{
-content:"";
+content:'';
 position:absolute;
 top:0;
 left:0;
 width:100%;
 height:100%;
-background:rgba(0,0,0,0.45);
+background:rgba(0,0,0,0.4);
 }
 
 .hero-content{
@@ -60,62 +68,91 @@ z-index:2;
 
 .hero h1{
 font-family:'Playfair Display',serif;
-font-size:36px;
-margin-bottom:20px;
+font-size:48px;
+margin-bottom:30px;
 }
 
-.btn{
-display:inline-block;
-padding:12px 28px;
+.hero button{
 background:#d6b98c;
-color:#3b2f2f;
+border:none;
+padding:14px 35px;
 border-radius:30px;
-text-decoration:none;
-font-weight:500;
-transition:0.2s;
+font-size:16px;
+font-family:'Poppins',sans-serif;
+cursor:pointer;
+transition:0.3s;
 }
 
-.btn:hover{
+.hero button:hover{
 transform:scale(1.05);
 }
 
 /* GALLERY */
 .gallery{
 display:flex;
-gap:30px;
 justify-content:center;
+gap:40px;
+padding:70px 20px;
 flex-wrap:wrap;
-padding:60px 20px;
+}
+
+.gallery a{
+display:block;
 }
 
 .gallery img{
-width:400px;
-height:300px;
+width:450px;
+height:320px;
 object-fit:cover;
 border-radius:18px;
 box-shadow:0 10px 25px rgba(0,0,0,0.1);
+transition:0.3s;
+cursor:pointer;
+}
+
+.gallery img:hover{
+transform:scale(1.05);
+box-shadow:0 15px 35px rgba(0,0,0,0.15);
 }
 
 /* CONTACT */
-.section{
+.contact{
+max-width:1000px;
+margin:auto;
 padding:60px 20px;
 text-align:center;
 }
 
-.section h2{
+.contact h2{
 font-family:'Playfair Display',serif;
-margin-bottom:20px;
+margin-bottom:25px;
 }
 
-.contact-info{
-max-width:600px;
-margin:auto;
-line-height:1.8;
+.contact p{
+margin:8px 0;
 }
 
-.map-container{
-max-width:800px;
-margin:40px auto 0 auto;
+.contact a{
+color:#3b2f2f;
+text-decoration:none;
+font-weight:500;
+}
+
+.contact a:hover{
+text-decoration:underline;
+}
+
+.map{
+margin-top:30px;
+}
+
+/* FOOTER */
+footer{
+text-align:center;
+padding:20px;
+background:white;
+margin-top:40px;
+font-size:14px;
 }
 </style>
 </head>
@@ -124,54 +161,60 @@ margin:40px auto 0 auto;
 
 <header>
 <a href="index.html">
-<img src="logo.png" alt="Logo">
+<img src="logo.png" alt="Logo Pupusas y Más">
 </a>
 </header>
 
 <section class="hero">
 <div class="hero-content">
 <h1>Las mejores pupusas de San Pedro Sula</h1>
-<a href="menu.html" class="btn">Ordenar Ahora</a>
+<a href="menu.html">
+<button>Ordenar Ahora</button>
+</a>
 </div>
 </section>
 
 <section class="gallery">
+<a href="menu.html">
 <img src="pupusa1.jpg" alt="Pupusas">
+</a>
+
+<a href="menu.html">
 <img src="pupusa2.jpg" alt="Comida">
+</a>
 </section>
 
-<section class="section">
+<section class="contact">
 <h2>Contáctanos</h2>
+<p>📍 San Pedro Sula - Jardines del Valle, Calle 9 10, 21102</p>
+<p>📞 +504 8780 9196</p>
+<p>🕒 Lunes a Sábado</p>
+<p>7:30 AM – 1:30 PM</p>
+<p>5:00 PM – 9:00 PM</p>
 
-<div class="contact-info">
-<p><strong>📍 Dirección:</strong><br>
-San Pedro Sula - Jardines del Valle, Calle 9 10, 21102</p>
+<p>📷 
+<a href="https://instagram.com/pupusasymashn" target="_blank">
+@pupusasymashn
+</a>
+</p>
 
-<p><strong>📞 Teléfono:</strong><br>
-+504 8780-9196</p>
-
-<p><strong>📸 Instagram:</strong><br>
-<a href="https://instagram.com/pupusasymas" target="_blank">@pupusasymas</a></p>
-
-<p><strong>🕒 Horarios:</strong><br>
-Lunes a Sábado<br>
-7:30 AM – 1:30 PM<br>
-5:00 PM – 9:00 PM</p>
-</div>
-
-<div class="map-container">
+<div class="map">
 <iframe 
-  src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d660.2362165103755!2d-88.02779429924331!3d15.53596381185558!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f665b198081f02b%3A0x258d1362a602e9ee!2sPupusas%20y%20m%C3%A1s...!5e0!3m2!1sen!2scl!4v1770876243560!5m2!1sen!2scl"
-  width="100%"
-  height="320"
-  style="border:0; border-radius:14px; box-shadow:0 8px 25px rgba(0,0,0,0.1);"
-  allowfullscreen=""
-  loading="lazy"
-  referrerpolicy="no-referrer-when-downgrade">
+src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d660.2362165103755!2d-88.02779429924331!3d15.53596381185558!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f665b198081f02b%3A0x258d1362a602e9ee!2sPupusas%20y%20m%C3%A1s...!5e0!3m2!1sen!2scl!4v1770876243560!5m2!1sen!2scl"
+width="100%"
+height="320"
+style="border:0; border-radius:14px; box-shadow:0 8px 25px rgba(0,0,0,0.1);"
+allowfullscreen=""
+loading="lazy"
+referrerpolicy="no-referrer-when-downgrade">
 </iframe>
 </div>
 
 </section>
+
+<footer>
+© 2026 Pupusas y Más | Est. 2019
+</footer>
 
 </body>
 </html>
