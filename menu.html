@@ -71,6 +71,9 @@ padding:6px 16px;
 border-radius:25px;
 cursor:pointer;
 transition:0.2s;
+font-family:'Poppins',sans-serif;
+font-weight:400;
+font-size:14px;
 }
 
 .add-btn:hover{
@@ -89,6 +92,8 @@ border:none;
 background:#d6b98c;
 border-radius:15px;
 cursor:pointer;
+font-family:'Poppins',sans-serif;
+font-weight:500;
 }
 
 /* FLOATING CART */
@@ -185,6 +190,7 @@ padding:8px;
 margin:8px 0;
 border:1px solid #d6b98c;
 border-radius:6px;
+font-family:'Poppins',sans-serif;
 }
 
 .checkout-btn{
@@ -196,6 +202,7 @@ border-radius:8px;
 margin-top:10px;
 cursor:pointer;
 font-weight:600;
+font-family:'Poppins',sans-serif;
 }
 
 .closed-message{
@@ -203,13 +210,6 @@ color:red;
 font-weight:600;
 text-align:center;
 margin-top:10px;
-}
-
-.success{
-display:none;
-text-align:center;
-padding:40px;
-font-weight:600;
 }
 </style>
 </head>
@@ -226,35 +226,32 @@ font-weight:600;
 <!-- PUPUSAS -->
 <div class="category">
 <h2>Pupusas (Orden de 2)</h2>
-
 <div class="menu-item"><span>Mixtas – 80 LPS</span><div class="controls" id="Mixtas-control"><button class="add-btn" onclick="addItem('Mixtas',80)">Agregar</button></div></div>
 <div class="menu-item"><span>Quesillo – 80 LPS</span><div class="controls" id="Quesillo-control"><button class="add-btn" onclick="addItem('Quesillo',80)">Agregar</button></div></div>
-<div class="menu-item"><span>Chorizo Quesillo – 80 LPS</span><div class="controls" id="Chorizo Quesillo-control"><button class="add-btn" onclick="addItem('Chorizo Quesillo',80)">Agregar</button></div></div>
-<div class="menu-item"><span>Loroco Quesillo – 80 LPS</span><div class="controls" id="Loroco Quesillo-control"><button class="add-btn" onclick="addItem('Loroco Quesillo',80)">Agregar</button></div></div>
-<div class="menu-item"><span>Frijoles Quesillo – 80 LPS</span><div class="controls" id="Frijoles Quesillo-control"><button class="add-btn" onclick="addItem('Frijoles Quesillo',80)">Agregar</button></div></div>
+<div class="menu-item"><span>Chorizo Quesillo – 80 LPS</span><div class="controls" id="ChorizoQuesillo-control"><button class="add-btn" onclick="addItem('Chorizo Quesillo',80)">Agregar</button></div></div>
+<div class="menu-item"><span>Loroco Quesillo – 80 LPS</span><div class="controls" id="LorocoQuesillo-control"><button class="add-btn" onclick="addItem('Loroco Quesillo',80)">Agregar</button></div></div>
+<div class="menu-item"><span>Frijoles Quesillo – 80 LPS</span><div class="controls" id="FrijolesQuesillo-control"><button class="add-btn" onclick="addItem('Frijoles Quesillo',80)">Agregar</button></div></div>
 <div class="menu-item"><span>Revueltas – 90 LPS</span><div class="controls" id="Revueltas-control"><button class="add-btn" onclick="addItem('Revueltas',90)">Agregar</button></div></div>
-<div class="menu-item"><span>Extra Repollo y Encurtido – 25 LPS</span><div class="controls" id="Extra-control"><button class="add-btn" onclick="addItem('Extra Repollo y Encurtido',25)">Agregar</button></div></div>
+<div class="menu-item"><span>Extra Repollo y Encurtido – 25 LPS</span><div class="controls" id="ExtraRepollo-control"><button class="add-btn" onclick="addItem('Extra Repollo y Encurtido',25)">Agregar</button></div></div>
 </div>
 
 <!-- BALEADAS -->
 <div class="category">
 <h2>Baleadas</h2>
-
 <div class="menu-item"><span>Sencilla – 25 LPS</span><div class="controls" id="Sencilla-control"><button class="add-btn" onclick="addItem('Sencilla',25)">Agregar</button></div></div>
 <div class="menu-item"><span>Huevo – 30 LPS</span><div class="controls" id="Huevo-control"><button class="add-btn" onclick="addItem('Huevo',30)">Agregar</button></div></div>
-<div class="menu-item"><span>Sencilla Pollo – 40 LPS</span><div class="controls" id="Sencilla Pollo-control"><button class="add-btn" onclick="addItem('Sencilla Pollo',40)">Agregar</button></div></div>
-<div class="menu-item"><span>Huevo Pollo – 50 LPS</span><div class="controls" id="Huevo Pollo-control"><button class="add-btn" onclick="addItem('Huevo Pollo',50)">Agregar</button></div></div>
-<div class="menu-item"><span>Sencilla Chorizo – 40 LPS</span><div class="controls" id="Sencilla Chorizo-control"><button class="add-btn" onclick="addItem('Sencilla Chorizo',40)">Agregar</button></div></div>
-<div class="menu-item"><span>Huevo Chorizo – 50 LPS</span><div class="controls" id="Huevo Chorizo-control"><button class="add-btn" onclick="addItem('Huevo Chorizo',50)">Agregar</button></div></div>
-<div class="menu-item"><span>Sencilla Embutido – 40 LPS</span><div class="controls" id="Sencilla Embutido-control"><button class="add-btn" onclick="addItem('Sencilla Embutido',40)">Agregar</button></div></div>
-<div class="menu-item"><span>Huevo Embutido – 50 LPS</span><div class="controls" id="Huevo Embutido-control"><button class="add-btn" onclick="addItem('Huevo Embutido',50)">Agregar</button></div></div>
+<div class="menu-item"><span>Sencilla Pollo – 40 LPS</span><div class="controls" id="SencillaPollo-control"><button class="add-btn" onclick="addItem('Sencilla Pollo',40)">Agregar</button></div></div>
+<div class="menu-item"><span>Huevo Pollo – 50 LPS</span><div class="controls" id="HuevoPollo-control"><button class="add-btn" onclick="addItem('Huevo Pollo',50)">Agregar</button></div></div>
+<div class="menu-item"><span>Sencilla Chorizo – 40 LPS</span><div class="controls" id="SencillaChorizo-control"><button class="add-btn" onclick="addItem('Sencilla Chorizo',40)">Agregar</button></div></div>
+<div class="menu-item"><span>Huevo Chorizo – 50 LPS</span><div class="controls" id="HuevoChorizo-control"><button class="add-btn" onclick="addItem('Huevo Chorizo',50)">Agregar</button></div></div>
+<div class="menu-item"><span>Sencilla Embutido – 40 LPS</span><div class="controls" id="SencillaEmbutido-control"><button class="add-btn" onclick="addItem('Sencilla Embutido',40)">Agregar</button></div></div>
+<div class="menu-item"><span>Huevo Embutido – 50 LPS</span><div class="controls" id="HuevoEmbutido-control"><button class="add-btn" onclick="addItem('Huevo Embutido',50)">Agregar</button></div></div>
 </div>
 
 <!-- DESAYUNOS -->
 <div class="category">
 <h2>Desayunos</h2>
-
-<div class="menu-item"><span>Desayuno Completo – 120 LPS</span><div class="controls" id="Desayuno Completo-control"><button class="add-btn" onclick="addItem('Desayuno Completo',120)">Agregar</button></div></div>
+<div class="menu-item"><span>Desayuno Completo – 120 LPS</span><div class="controls" id="DesayunoCompleto-control"><button class="add-btn" onclick="addItem('Desayuno Completo',120)">Agregar</button></div></div>
 <div class="menu-item"><span>Tortillas con Quesillo (Orden de 2) – 60 LPS</span><div class="controls" id="Tortillas-control"><button class="add-btn" onclick="addItem('Tortillas con Quesillo',60)">Agregar</button></div></div>
 </div>
 
@@ -262,9 +259,8 @@ font-weight:600;
 <div class="category">
 <h2>Almuerzos</h2>
 <div class="note">12:00PM – 1:30PM</div>
-
-<div class="menu-item"><span>Tacos Flauta de Pollo – 120 LPS</span><div class="controls" id="Tacos Flauta-control"><button class="add-btn" onclick="addItem('Tacos Flauta de Pollo',120)">Agregar</button></div></div>
-<div class="menu-item"><span>Tacos Mexicanos – 120 LPS</span><div class="controls" id="Tacos Mexicanos-control"><button class="add-btn" onclick="addItem('Tacos Mexicanos',120)">Agregar</button></div></div>
+<div class="menu-item"><span>Tacos Flauta de Pollo – 120 LPS</span><div class="controls" id="TacosFlauta-control"><button class="add-btn" onclick="addItem('Tacos Flauta de Pollo',120)">Agregar</button></div></div>
+<div class="menu-item"><span>Tacos Mexicanos – 120 LPS</span><div class="controls" id="TacosMexicanos-control"><button class="add-btn" onclick="addItem('Tacos Mexicanos',120)">Agregar</button></div></div>
 <div class="menu-item"><span>Gringas de Pollo – 55 LPS</span><div class="controls" id="Gringas-control"><button class="add-btn" onclick="addItem('Gringas de Pollo',55)">Agregar</button></div></div>
 <div class="menu-item"><span>Plátano Frito – 55 LPS</span><div class="controls" id="Platano-control"><button class="add-btn" onclick="addItem('Plátano Frito',55)">Agregar</button></div></div>
 <div class="menu-item"><span>Burrita – 45 LPS</span><div class="controls" id="Burrita-control"><button class="add-btn" onclick="addItem('Burrita',45)">Agregar</button></div></div>
@@ -274,7 +270,6 @@ font-weight:600;
 <!-- BEBIDAS -->
 <div class="category">
 <h2>Bebidas</h2>
-
 <div class="menu-item"><span>Horchata – 35 LPS</span><div class="controls" id="Horchata-control"><button class="add-btn" onclick="addItem('Horchata',35)">Agregar</button></div></div>
 <div class="menu-item"><span>Limonada – 40 LPS</span><div class="controls" id="Limonada-control"><button class="add-btn" onclick="addItem('Limonada',40)">Agregar</button></div></div>
 <div class="menu-item"><span>Jamaica – 40 LPS</span><div class="controls" id="Jamaica-control"><button class="add-btn" onclick="addItem('Jamaica',40)">Agregar</button></div></div>
@@ -282,29 +277,23 @@ font-weight:600;
 
 </section>
 
-<!-- FLOATING CART BUTTON -->
 <div class="cart-float" onclick="toggleCart()">
 🛒 Carrito <span class="cart-count" id="cartCount">0</span>
 </div>
 
 <div class="overlay" id="overlay" onclick="toggleCart()"></div>
 
-<!-- CART PANEL -->
 <div class="cart" id="cart">
 <div class="cart-header">
 <h2>Tu Pedido</h2>
 <div class="close-cart" onclick="toggleCart()">✕</div>
 </div>
-
 <div id="cartItems"></div>
 <div class="cart-total">Total: <span id="cartTotal">0</span> LPS</div>
-
 <hr>
-
 <textarea id="notas" placeholder="Notas especiales (escribe acá...)"></textarea>
 <input type="text" id="nombre" placeholder="Nombre">
 <input type="tel" id="telefono" placeholder="Teléfono">
-
 <select id="pickupTime">
 <option value="">Hora de recogida</option>
 <option>15 minutos</option>
@@ -313,10 +302,8 @@ font-weight:600;
 <option>1 hora</option>
 <option>2 horas</option>
 </select>
-
 <button class="checkout-btn" id="checkoutBtn" onclick="checkout()">Finalizar Pedido</button>
 <div class="closed-message" id="closedMessage"></div>
-
 </div>
 
 <script>
@@ -327,6 +314,10 @@ function saveCart(){ localStorage.setItem("cart",JSON.stringify(cart)); }
 function toggleCart(){
 document.getElementById("cart").classList.toggle("active");
 document.getElementById("overlay").classList.toggle("active");
+}
+
+function getId(name){
+return name.replace(/[^a-zA-Z0-9]/g,'')+"-control";
 }
 
 function addItem(name,price){
@@ -348,14 +339,14 @@ saveCart();
 }
 
 function resetControl(name){
-let id=name.replace(/[\/\s]/g,'')+"-control";
+let id=getId(name);
 document.getElementById(id).innerHTML=
 `<button class="add-btn" onclick="addItem('${name}',${cart[name]?.price||0})">Agregar</button>`;
 }
 
 function renderMenuControl(name){
 if(!cart[name]) return;
-let id=name.replace(/[\/\s]/g,'')+"-control";
+let id=getId(name);
 document.getElementById(id).innerHTML=
 `<div class="qty-controls">
 <button onclick="changeQty('${name}',-1)">−</button>
@@ -390,11 +381,9 @@ function isOpen(){
 let now=new Date();
 let day=now.getDay();
 if(day===0) return false;
-
 let current=now.getHours()*60+now.getMinutes();
 let mOpen=7*60+30, mClose=13*60+30;
 let eOpen=17*60, eClose=21*60;
-
 return (current>=mOpen && current<=mClose) || (current>=eOpen && current<=eClose);
 }
 
@@ -451,6 +440,7 @@ alert("Pedido enviado correctamente.");
 
 renderCart();
 checkHours();
+Object.keys(cart).forEach(item=>renderMenuControl(item));
 </script>
 
 </body>
