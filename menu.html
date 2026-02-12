@@ -9,160 +9,207 @@
 
 <style>
 body{
-    margin:0;
-    font-family:'Poppins',sans-serif;
-    background:#f5efe6;
-    color:#3b2f2f;
+margin:0;
+font-family:'Poppins',sans-serif;
+background:#f5efe6;
+color:#3b2f2f;
 }
 
 header{
-    background:white;
-    padding:10px 30px;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    box-shadow:0 2px 10px rgba(0,0,0,0.05);
+background:white;
+padding:15px 30px;
+box-shadow:0 2px 10px rgba(0,0,0,0.05);
+text-align:center;
 }
 
 header img{ height:120px; }
 
-.cart-icon{
-    position:relative;
-    cursor:pointer;
-    font-size:22px;
-}
-
-.cart-count{
-    position:absolute;
-    top:-6px;
-    right:-12px;
-    background:#d6b98c;
-    border-radius:50%;
-    padding:4px 8px;
-    font-size:12px;
-}
-
 section{
-    max-width:1000px;
-    margin:auto;
-    padding:40px 20px;
+max-width:1000px;
+margin:auto;
+padding:50px 20px;
 }
 
 h1{
-    text-align:center;
-    font-family:'Playfair Display',serif;
+text-align:center;
+font-family:'Playfair Display',serif;
+margin-bottom:40px;
 }
 
 .category{
-    margin-top:50px;
+margin-top:60px;
 }
 
 .category h2{
-    border-bottom:2px solid #d6b98c;
-    padding-bottom:6px;
+border-bottom:2px solid #d6b98c;
+padding-bottom:8px;
+font-family:'Playfair Display',serif;
 }
 
 .note{
-    font-size:14px;
-    opacity:0.7;
+font-size:14px;
+opacity:0.6;
+margin-bottom:10px;
 }
 
 .menu-item{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    margin:12px 0;
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin:18px 0;
 }
 
 .controls{
-    display:flex;
-    align-items:center;
+display:flex;
+align-items:center;
 }
 
 .add-btn{
-    background:#d6b98c;
-    border:none;
-    padding:6px 14px;
-    border-radius:20px;
-    cursor:pointer;
+background:#d6b98c;
+border:none;
+padding:6px 16px;
+border-radius:25px;
+cursor:pointer;
+transition:0.2s;
+}
+
+.add-btn:hover{
+transform:scale(1.05);
 }
 
 .qty-controls{
-    display:flex;
-    align-items:center;
+display:flex;
+align-items:center;
 }
 
 .qty-controls button{
-    padding:2px 8px;
-    margin:0 6px;
+padding:2px 10px;
+margin:0 6px;
+border:none;
+background:#d6b98c;
+border-radius:15px;
+cursor:pointer;
 }
 
+/* FLOATING CART BUTTON */
+.cart-float{
+position:fixed;
+bottom:25px;
+right:25px;
+background:#d6b98c;
+padding:14px 22px;
+border-radius:30px;
+cursor:pointer;
+box-shadow:0 8px 20px rgba(0,0,0,0.2);
+font-weight:600;
+z-index:1000;
+}
+
+.cart-count{
+margin-left:6px;
+background:#3b2f2f;
+color:white;
+padding:3px 7px;
+border-radius:50%;
+font-size:12px;
+}
+
+/* OVERLAY */
+.overlay{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.3);
+opacity:0;
+pointer-events:none;
+transition:0.3s;
+z-index:900;
+}
+
+.overlay.active{
+opacity:1;
+pointer-events:auto;
+}
+
+/* CART PANEL */
 .cart{
-    position:fixed;
-    top:0;
-    right:-400px;
-    width:350px;
-    height:100%;
-    background:white;
-    box-shadow:-4px 0 20px rgba(0,0,0,0.15);
-    padding:20px;
-    transition:0.3s;
-    overflow-y:auto;
+position:fixed;
+top:0;
+right:-420px;
+width:380px;
+height:100%;
+background:white;
+box-shadow:-4px 0 25px rgba(0,0,0,0.2);
+padding:25px;
+transition:0.35s ease;
+overflow-y:auto;
+z-index:1001;
 }
 
-.cart.active{ right:0; }
+.cart.active{
+right:0;
+}
 
 .cart-header{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
+display:flex;
+justify-content:space-between;
+align-items:center;
 }
 
 .close-cart{
-    cursor:pointer;
-    font-size:20px;
+cursor:pointer;
+font-size:22px;
 }
 
 .cart-item{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    margin:10px 0;
+display:flex;
+justify-content:space-between;
+margin:12px 0;
 }
 
 .remove{
-    cursor:pointer;
-    color:red;
+cursor:pointer;
+color:red;
 }
 
 .cart-total{
-    font-weight:600;
-    margin-top:15px;
+font-weight:600;
+margin-top:15px;
 }
 
-input,select{
-    width:100%;
-    padding:8px;
-    margin:8px 0;
-    border:1px solid #d6b98c;
-    border-radius:6px;
+input,select,textarea{
+width:100%;
+padding:8px;
+margin:8px 0;
+border:1px solid #d6b98c;
+border-radius:6px;
 }
 
 .checkout-btn{
-    width:100%;
-    padding:10px;
-    background:#d6b98c;
-    border:none;
-    border-radius:8px;
-    margin-top:10px;
-    cursor:pointer;
+width:100%;
+padding:12px;
+background:#d6b98c;
+border:none;
+border-radius:8px;
+margin-top:10px;
+cursor:pointer;
+font-weight:600;
+}
+
+.closed-message{
+color:red;
+font-weight:600;
+text-align:center;
+margin-top:10px;
 }
 
 .success{
-    display:none;
-    text-align:center;
-    padding:40px;
-    font-weight:600;
+display:none;
+text-align:center;
+padding:40px;
+font-weight:600;
 }
 </style>
 </head>
@@ -171,83 +218,45 @@ input,select{
 
 <header>
 <a href="index.html"><img src="logo.png"></a>
-<div class="cart-icon" onclick="toggleCart()">🛒
-<div class="cart-count" id="cartCount">0</div>
-</div>
 </header>
 
 <section>
 <h1>Nuestro Menú</h1>
 
-<!-- PUPUSAS -->
 <div class="category">
-<h2>Pupusas (Orden de 2)</h2>
+<h2>Pupusas</h2>
 
 <div class="menu-item"><span>Mixtas – 80 LPS</span><div class="controls" id="Mixtas-control"><button class="add-btn" onclick="addItem('Mixtas',80)">Agregar</button></div></div>
-<div class="menu-item"><span>Quesillo – 80 LPS</span><div class="controls" id="Quesillo-control"><button class="add-btn" onclick="addItem('Quesillo',80)">Agregar</button></div></div>
-<div class="menu-item"><span>Chorizo Quesillo – 80 LPS</span><div class="controls" id="ChorizoQuesillo-control"><button class="add-btn" onclick="addItem('Chorizo Quesillo',80)">Agregar</button></div></div>
-<div class="menu-item"><span>Loroco Quesillo – 80 LPS</span><div class="controls" id="LorocoQuesillo-control"><button class="add-btn" onclick="addItem('Loroco Quesillo',80)">Agregar</button></div></div>
-<div class="menu-item"><span>Frijoles Quesillo – 80 LPS</span><div class="controls" id="FrijolesQuesillo-control"><button class="add-btn" onclick="addItem('Frijoles Quesillo',80)">Agregar</button></div></div>
 <div class="menu-item"><span>Revueltas – 90 LPS</span><div class="controls" id="Revueltas-control"><button class="add-btn" onclick="addItem('Revueltas',90)">Agregar</button></div></div>
-<div class="menu-item"><span>Extra Repollo y Encurtido – 25 LPS</span><div class="controls" id="ExtraRepollo-control"><button class="add-btn" onclick="addItem('Extra Repollo',25)">Agregar</button></div></div>
-</div>
+<div class="menu-item"><span>Quesillo – 80 LPS</span><div class="controls" id="Quesillo-control"><button class="add-btn" onclick="addItem('Quesillo',80)">Agregar</button></div></div>
 
-<!-- BALEADAS -->
-<div class="category">
-<h2>Baleadas</h2>
-
-<div class="menu-item"><span>Sencilla – 25 LPS</span><div class="controls" id="Sencilla-control"><button class="add-btn" onclick="addItem('Sencilla',25)">Agregar</button></div></div>
-<div class="menu-item"><span>Huevo – 30 LPS</span><div class="controls" id="Huevo-control"><button class="add-btn" onclick="addItem('Huevo',30)">Agregar</button></div></div>
-<div class="menu-item"><span>Sencilla Pollo – 40 LPS</span><div class="controls" id="SencillaPollo-control"><button class="add-btn" onclick="addItem('Sencilla Pollo',40)">Agregar</button></div></div>
-<div class="menu-item"><span>Huevo Pollo – 50 LPS</span><div class="controls" id="HuevoPollo-control"><button class="add-btn" onclick="addItem('Huevo Pollo',50)">Agregar</button></div></div>
-<div class="menu-item"><span>Sencilla Chorizo – 40 LPS</span><div class="controls" id="SencillaChorizo-control"><button class="add-btn" onclick="addItem('Sencilla Chorizo',40)">Agregar</button></div></div>
-<div class="menu-item"><span>Huevo Chorizo – 50 LPS</span><div class="controls" id="HuevoChorizo-control"><button class="add-btn" onclick="addItem('Huevo Chorizo',50)">Agregar</button></div></div>
-<div class="menu-item"><span>Sencilla Embutido – 40 LPS</span><div class="controls" id="SencillaEmbutido-control"><button class="add-btn" onclick="addItem('Sencilla Embutido',40)">Agregar</button></div></div>
-<div class="menu-item"><span>Huevo Embutido – 50 LPS</span><div class="controls" id="HuevoEmbutido-control"><button class="add-btn" onclick="addItem('Huevo Embutido',50)">Agregar</button></div></div>
-</div>
-
-<!-- DESAYUNOS -->
-<div class="category">
-<h2>Desayunos</h2>
-
-<div class="menu-item"><span>Huevo, Plátano, Frijoles, Queso, Mantequilla, Embutido y Tortillas – 120 LPS</span><div class="controls" id="DesayunoCompleto-control"><button class="add-btn" onclick="addItem('Desayuno Completo',120)">Agregar</button></div></div>
-<div class="menu-item"><span>Tortillas con Quesillo (Orden de 2) – 60 LPS</span><div class="controls" id="TortillasQuesillo-control"><button class="add-btn" onclick="addItem('Tortillas con Quesillo',60)">Agregar</button></div></div>
-</div>
-
-<!-- ALMUERZOS -->
-<div class="category">
-<h2>Almuerzos</h2>
-<div class="note">12:00PM – 1:30PM</div>
-
-<div class="menu-item"><span>Tacos Flauta de Pollo – 120 LPS</span><div class="controls" id="TacosFlauta-control"><button class="add-btn" onclick="addItem('Tacos Flauta de Pollo',120)">Agregar</button></div></div>
-<div class="menu-item"><span>Tacos Mexicanos – 120 LPS</span><div class="controls" id="TacosMexicanos-control"><button class="add-btn" onclick="addItem('Tacos Mexicanos',120)">Agregar</button></div></div>
-<div class="menu-item"><span>Gringas de Pollo – 55 LPS</span><div class="controls" id="Gringas-control"><button class="add-btn" onclick="addItem('Gringas de Pollo',55)">Agregar</button></div></div>
-<div class="menu-item"><span>Plátano Frito – 55 LPS</span><div class="controls" id="PlatanoFrito-control"><button class="add-btn" onclick="addItem('Plátano Frito',55)">Agregar</button></div></div>
-<div class="menu-item"><span>Burrita – 45 LPS</span><div class="controls" id="Burrita-control"><button class="add-btn" onclick="addItem('Burrita',45)">Agregar</button></div></div>
-<div class="menu-item"><span>Chuleta, Costilla o Pollo – 140 LPS</span><div class="controls" id="Chuleta-control"><button class="add-btn" onclick="addItem('Chuleta / Costilla / Pollo',140)">Agregar</button></div></div>
-</div>
-
-<!-- BEBIDAS -->
-<div class="category">
-<h2>Bebidas</h2>
-
-<div class="menu-item"><span>Horchata – 35 LPS</span><div class="controls" id="Horchata-control"><button class="add-btn" onclick="addItem('Horchata',35)">Agregar</button></div></div>
-<div class="menu-item"><span>Limonada – 40 LPS</span><div class="controls" id="Limonada-control"><button class="add-btn" onclick="addItem('Limonada',40)">Agregar</button></div></div>
-<div class="menu-item"><span>Jamaica – 40 LPS</span><div class="controls" id="Jamaica-control"><button class="add-btn" onclick="addItem('Jamaica',40)">Agregar</button></div></div>
 </div>
 
 </section>
 
+<!-- FLOATING CART -->
+<div class="cart-float" onclick="toggleCart()">
+🛒 Carrito <span class="cart-count" id="cartCount">0</span>
+</div>
+
+<div class="overlay" id="overlay" onclick="toggleCart()"></div>
+
+<!-- CART PANEL -->
 <div class="cart" id="cart">
 <div class="cart-header">
-<h2>🛒 Tu Pedido</h2>
+<h2>Tu Pedido</h2>
 <div class="close-cart" onclick="toggleCart()">✕</div>
 </div>
+
 <div id="cartItems"></div>
 <div class="cart-total">Total: <span id="cartTotal">0</span> LPS</div>
+
 <hr>
+
+<textarea id="notas" placeholder="Notas especiales (sin repollo, extra queso...)"></textarea>
 <input type="text" id="nombre" placeholder="Nombre">
 <input type="tel" id="telefono" placeholder="Teléfono">
+
 <select id="pickupTime">
 <option value="">Hora de recogida</option>
 <option>15 minutos</option>
@@ -255,7 +264,10 @@ input,select{
 <option>45 minutos</option>
 <option>1 hora</option>
 </select>
-<button class="checkout-btn" onclick="checkout()">Finalizar Pedido</button>
+
+<button class="checkout-btn" id="checkoutBtn" onclick="checkout()">Finalizar Pedido</button>
+<div class="closed-message" id="closedMessage"></div>
+
 </div>
 
 <div id="successMessage" class="success">
@@ -263,16 +275,23 @@ input,select{
 </div>
 
 <script>
-let cart={};
+
+let cart=JSON.parse(localStorage.getItem("cart"))||{};
+
+function saveCart(){
+localStorage.setItem("cart",JSON.stringify(cart));
+}
 
 function toggleCart(){
 document.getElementById("cart").classList.toggle("active");
+document.getElementById("overlay").classList.toggle("active");
 }
 
 function addItem(name,price){
 cart[name]={price:price,qty:1};
 renderMenuControl(name);
 renderCart();
+saveCart();
 }
 
 function changeQty(name,amount){
@@ -283,17 +302,18 @@ resetControl(name);
 }
 renderCart();
 renderMenuControl(name);
+saveCart();
 }
 
 function resetControl(name){
-let id=name.replace(/[\s\/]/g,'')+"-control";
+let id=name+"-control";
 document.getElementById(id).innerHTML=
 `<button class="add-btn" onclick="addItem('${name}',${cart[name]?.price||0})">Agregar</button>`;
 }
 
 function renderMenuControl(name){
 if(!cart[name]) return;
-let id=name.replace(/[\s\/]/g,'')+"-control";
+let id=name+"-control";
 document.getElementById(id).innerHTML=
 `<div class="qty-controls">
 <button onclick="changeQty('${name}',-1)">−</button>
@@ -324,16 +344,41 @@ document.getElementById("cartTotal").innerText=total;
 document.getElementById("cartCount").innerText=count;
 }
 
-function checkout(){
+function isOpen(){
+let now=new Date();
+let day=now.getDay();
+if(day===0) return false;
 
-if(Object.keys(cart).length===0){
-alert("Agrega productos al carrito");
+let hours=now.getHours();
+let minutes=now.getMinutes();
+let current=hours*60+minutes;
+
+let morningOpen=7*60+30;
+let morningClose=13*60+30;
+let eveningOpen=17*60;
+let eveningClose=21*60;
+
+return (current>=morningOpen && current<=morningClose) ||
+(current>=eveningOpen && current<=eveningClose);
+}
+
+function checkHours(){
+if(!isOpen()){
+document.getElementById("checkoutBtn").disabled=true;
+document.getElementById("closedMessage").innerText="Estamos cerrados en este momento.";
+}
+}
+
+function checkout(){
+if(!isOpen()){
+alert("Estamos cerrados.");
 return;
 }
 
 let nombre=document.getElementById("nombre").value;
 let telefono=document.getElementById("telefono").value;
 let pickup=document.getElementById("pickupTime").value;
+let notas=document.getElementById("notas").value;
 
 let total=0;
 let orderText="";
@@ -343,23 +388,37 @@ orderText+=`• ${cart[item].qty} ${item}\n`;
 total+=cart[item].price*cart[item].qty;
 }
 
+let message=
+`🛎️ Nuevo Pedido\n\n`+
+`👤 ${nombre}\n`+
+`📞 ${telefono}\n`+
+`⏰ ${pickup}\n\n`+
+`📝 Pedido:\n${orderText}\n`+
+`🗒 Notas: ${notas}\n\n`+
+`💰 Total: ${total} LPS`;
+
 fetch("https://formsubmit.co/ajax/pupusasymashn@gmail.com",{
 method:"POST",
 headers:{'Content-Type':'application/json'},
 body:JSON.stringify({
 name:nombre,
-message:orderText,
+message:message,
 _subject:"Nuevo Pedido - Pupusas y Más"
 })
 });
 
-window.open(`https://wa.me/50487809196?text=${encodeURIComponent(orderText)}`,'_blank');
+window.open(`https://wa.me/50487809196?text=${encodeURIComponent(message)}`,'_blank');
 
-document.getElementById("successMessage").style.display="block";
-toggleCart();
+localStorage.removeItem("cart");
 cart={};
 renderCart();
+document.getElementById("successMessage").style.display="block";
+toggleCart();
 }
+
+renderCart();
+checkHours();
+
 </script>
 
 </body>
