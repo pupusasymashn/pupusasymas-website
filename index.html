@@ -14,22 +14,22 @@ body {
     font-family: 'Poppins', sans-serif;
     background-color: #f5efe6;
     color: #3b2f2f;
-    scroll-behavior: smooth;
 }
 
-/* HEADER */
+/* HEADER - FIXED CLEAN */
 header {
     position: fixed;
+    top: 0;
     width: 100%;
     background: white;
-    padding: 10px 0;
+    padding: 5px 0;
     text-align: center;
     z-index: 1000;
     box-shadow: 0 2px 10px rgba(0,0,0,0.05);
 }
 
 header img {
-    height: 140px; /* BIGGER LOGO */
+    height: 190px; /* MUCH BIGGER LOGO */
 }
 
 nav {
@@ -53,7 +53,7 @@ nav a {
     text-align: center;
     color: white;
     padding: 20px;
-    margin-top: 160px; /* pushes content below fixed header */
+    margin-top: 210px; /* match header height */
 }
 
 .hero-content {
@@ -101,8 +101,8 @@ h2 {
 }
 
 .gallery img {
-    width: 450px;     /* SAME SIZE */
-    height: 350px;    /* SAME HEIGHT */
+    width: 450px;
+    height: 350px;
     object-fit: cover;
     border-radius: 15px;
 }
@@ -111,6 +111,12 @@ h2 {
 .contact-info {
     text-align: center;
     line-height: 1.8;
+}
+
+.contact-info a {
+    color: #3b2f2f;
+    text-decoration: none;
+    font-weight: 500;
 }
 
 /* MAP */
@@ -130,7 +136,8 @@ footer {
 
 /* MOBILE */
 @media(max-width:768px){
-    header img { height: 95px; }
+    header img { height: 120px; }
+    .hero { margin-top: 160px; }
     .hero h2 { font-size: 28px; }
     .gallery img {
         width: 100%;
@@ -144,11 +151,11 @@ footer {
 <body>
 
 <header>
-    <img src="logo.png" alt="Pupusas y Más Logo">
+    <a href="index.html">
+        <img src="logo.png" alt="Pupusas y Más Logo">
+    </a>
     <nav>
         <a href="menu.html">Menú</a>
-        <a href="#gallery">Galería</a>
-        <a href="#contact">Contacto</a>
         <a href="ordenar.html">Ordenar</a>
     </nav>
 </header>
@@ -173,7 +180,8 @@ footer {
     <h2>Contáctanos</h2>
     <div class="contact-info">
         📍 San Pedro Sula - Jardines del Valle, Calle 9 10, 21102<br>
-        📞 <a href="tel:+50487809196">+504 8780-9196</a>
+        📞 <a href="tel:+50487809196">+504 8780-9196</a><br><br>
+        📸 <a href="https://instagram.com/pupusasymashn" target="_blank">@pupusasymashn</a>
     </div>
 
     <div class="map-container">
@@ -186,7 +194,6 @@ footer {
             loading="lazy">
         </iframe>
     </div>
-
 </section>
 
 <footer>
