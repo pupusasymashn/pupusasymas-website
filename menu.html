@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Menú | Pupusas y Más</title>
+<title>Ordenar | Pupusas y Más</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 
@@ -27,68 +27,51 @@ header img {
     height: 95px;
 }
 
-nav {
-    margin-top: 10px;
-}
-
-nav a {
-    color: #3b2f2f;
-    margin: 0 20px;
-    text-decoration: none;
-    font-weight: 500;
-}
-
 section {
-    padding: 80px 20px;
-    max-width: 900px;
+    padding: 60px 20px;
+    max-width: 700px;
     margin: auto;
 }
 
 h1 {
     font-family: 'Playfair Display', serif;
     text-align: center;
-    margin-bottom: 60px;
-    font-size: 40px;
+    margin-bottom: 40px;
 }
 
-.menu-category {
-    margin-bottom: 60px;
+label {
+    font-weight: 500;
 }
 
-.menu-category h2 {
-    font-family: 'Playfair Display', serif;
-    border-bottom: 2px solid #d6b98c;
-    padding-bottom: 10px;
-    margin-bottom: 25px;
+input, textarea, select {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0 20px 0;
+    border: 1px solid #d6b98c;
+    border-radius: 5px;
+    font-family: 'Poppins', sans-serif;
 }
 
-.menu-item {
-    display: flex;
-    justify-content: space-between;
-    margin: 15px 0;
-    font-size: 16px;
-}
-
-.menu-item span:last-child {
+button {
+    width: 100%;
+    padding: 14px;
+    background: #d6b98c;
+    border: none;
+    border-radius: 5px;
     font-weight: 600;
+    cursor: pointer;
 }
 
-.note {
-    font-size: 14px;
-    color: #7a6a55;
-    margin-top: 10px;
+button:hover {
+    opacity: 0.9;
 }
 
 footer {
     background: #3b2f2f;
     color: white;
     text-align: center;
-    padding: 30px;
-    margin-top: 80px;
-}
-
-@media(max-width:768px){
-    header img { height: 70px; }
+    padding: 25px;
+    margin-top: 60px;
 }
 
 </style>
@@ -98,80 +81,49 @@ footer {
 
 <header>
     <img src="logo.png" alt="Pupusas y Más Logo">
-    <nav>
-        <a href="index.html">Inicio</a>
-        <a href="#contact">Contacto</a>
-    </nav>
 </header>
 
 <section>
-    <h1>Nuestro Menú</h1>
+    <h1>Haz Tu Pedido</h1>
 
-    <div class="menu-category">
-        <h2>Pupusas (Orden de 2)</h2>
-        <div class="menu-item"><span>Mixtas</span><span>80 LPS</span></div>
-        <div class="menu-item"><span>Quesillo</span><span>80 LPS</span></div>
-        <div class="menu-item"><span>Chorizo Quesillo</span><span>80 LPS</span></div>
-        <div class="menu-item"><span>Loroco Quesillo</span><span>80 LPS</span></div>
-        <div class="menu-item"><span>Frijoles Quesillo</span><span>80 LPS</span></div>
-        <div class="menu-item"><span>Revueltas</span><span>90 LPS</span></div>
-        <p class="note">Extras de Repollo y Encurtido — 25 LPS</p>
-    </div>
+    <form action="https://formsubmit.co/pupusasymashn@gmail.com" method="POST" target="_blank" onsubmit="sendWhatsApp()">
 
-    <div class="menu-category">
-        <h2>Baleadas</h2>
-        <div class="menu-item"><span>Sencilla</span><span>25 LPS</span></div>
-        <div class="menu-item"><span>Huevo</span><span>30 LPS</span></div>
-        <div class="menu-item"><span>Sencilla Pollo</span><span>40 LPS</span></div>
-        <div class="menu-item"><span>Huevo Pollo</span><span>50 LPS</span></div>
-        <div class="menu-item"><span>Sencilla Chorizo</span><span>40 LPS</span></div>
-        <div class="menu-item"><span>Huevo Chorizo</span><span>50 LPS</span></div>
-        <div class="menu-item"><span>Sencilla Embutido</span><span>40 LPS</span></div>
-        <div class="menu-item"><span>Huevo Embutido</span><span>50 LPS</span></div>
-    </div>
+        <input type="hidden" name="_captcha" value="false">
 
-    <div class="menu-category">
-        <h2>Desayunos</h2>
-        <div class="menu-item">
-            <span>Desayuno Completo (Huevo, Plátano, Frijoles, Queso, Mantequilla, Embutido y Tortillas)</span>
-            <span>120 LPS</span>
-        </div>
-        <div class="menu-item">
-            <span>Tortillas con Quesillo (Orden de 2)</span>
-            <span>60 LPS</span>
-        </div>
-    </div>
+        <label>Nombre</label>
+        <input type="text" name="Nombre" id="nombre" required>
 
-    <div class="menu-category">
-        <h2>Almuerzos</h2>
-        <div class="menu-item"><span>Tacos Flauta de Pollo</span><span>120 LPS</span></div>
-        <div class="menu-item"><span>Tacos Mexicanos</span><span>120 LPS</span></div>
-        <div class="menu-item"><span>Gringas de Pollo</span><span>55 LPS C/U</span></div>
-        <div class="menu-item"><span>Plátano Frito</span><span>55 LPS</span></div>
-        <div class="menu-item"><span>Burrita</span><span>45 LPS</span></div>
-        <div class="menu-item"><span>Chuleta, Costilla o Pollo</span><span>140 LPS</span></div>
-    </div>
+        <label>Teléfono</label>
+        <input type="tel" name="Telefono" id="telefono" required>
 
-    <div class="menu-category">
-        <h2>Bebidas</h2>
-        <div class="menu-item"><span>Horchata</span><span>35 LPS</span></div>
-        <div class="menu-item"><span>Limonada</span><span>40 LPS</span></div>
-        <div class="menu-item"><span>Jamaica</span><span>40 LPS</span></div>
-    </div>
+        <label>Pedido</label>
+        <textarea name="Pedido" id="pedido" rows="4" placeholder="Ej: 2 Ordenes de Pupusas Revueltas, 1 Horchata" required></textarea>
 
-</section>
+        <label>Notas adicionales</label>
+        <textarea name="Notas" id="notas" rows="3"></textarea>
 
-<section id="contact">
-    <h2 style="text-align:center; font-family:'Playfair Display', serif;">Contáctanos</h2>
-    <p style="text-align:center;">
-        📍 San Pedro Sula - Jardines del Valle, Calle 9 10, 21102<br>
-        📞 <a href="tel:+50487809196">+504 8780-9196</a>
-    </p>
+        <button type="submit">Enviar Pedido</button>
+
+    </form>
+
 </section>
 
 <footer>
     © 2026 Pupusas y Más | Est. 2019
 </footer>
+
+<script>
+function sendWhatsApp() {
+    let nombre = document.getElementById("nombre").value;
+    let telefono = document.getElementById("telefono").value;
+    let pedido = document.getElementById("pedido").value;
+    let notas = document.getElementById("notas").value;
+
+    let mensaje = `Nuevo Pedido:%0A%0ANombre: ${nombre}%0ATeléfono: ${telefono}%0APedido: ${pedido}%0ANotas: ${notas}`;
+
+    window.open(`https://wa.me/50487809196?text=${mensaje}`, '_blank');
+}
+</script>
 
 </body>
 </html>
