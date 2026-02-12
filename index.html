@@ -17,22 +17,23 @@ body {
     scroll-behavior: smooth;
 }
 
+/* HEADER */
 header {
     position: fixed;
     width: 100%;
     background: white;
-    padding: 20px 0;
+    padding: 10px 0;
     text-align: center;
     z-index: 1000;
     box-shadow: 0 2px 10px rgba(0,0,0,0.05);
 }
 
 header img {
-    height: 95px;
+    height: 140px; /* BIGGER LOGO */
 }
 
 nav {
-    margin-top: 10px;
+    margin-top: 5px;
 }
 
 nav a {
@@ -42,6 +43,7 @@ nav a {
     font-weight: 500;
 }
 
+/* HERO */
 .hero {
     height: 100vh;
     background: url('pupusa1.jpg') center/cover no-repeat;
@@ -51,6 +53,7 @@ nav a {
     text-align: center;
     color: white;
     padding: 20px;
+    margin-top: 160px; /* pushes content below fixed header */
 }
 
 .hero-content {
@@ -76,6 +79,7 @@ nav a {
     font-weight: 600;
 }
 
+/* SECTIONS */
 section {
     padding: 120px 20px;
     max-width: 1000px;
@@ -88,22 +92,35 @@ h2 {
     margin-bottom: 50px;
 }
 
+/* GALLERY */
 .gallery {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 
 .gallery img {
-    width: 100%;
+    width: 450px;     /* SAME SIZE */
+    height: 350px;    /* SAME HEIGHT */
+    object-fit: cover;
     border-radius: 15px;
 }
 
+/* CONTACT */
 .contact-info {
     text-align: center;
     line-height: 1.8;
 }
 
+/* MAP */
+.map-container {
+    margin-top: 40px;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+/* FOOTER */
 footer {
     background: #3b2f2f;
     color: white;
@@ -111,9 +128,14 @@ footer {
     padding: 30px;
 }
 
+/* MOBILE */
 @media(max-width:768px){
+    header img { height: 95px; }
     .hero h2 { font-size: 28px; }
-    header img { height: 70px; }
+    .gallery img {
+        width: 100%;
+        height: 250px;
+    }
 }
 
 </style>
@@ -127,6 +149,7 @@ footer {
         <a href="menu.html">Menú</a>
         <a href="#gallery">Galería</a>
         <a href="#contact">Contacto</a>
+        <a href="ordenar.html">Ordenar</a>
     </nav>
 </header>
 
@@ -134,7 +157,7 @@ footer {
     <div class="hero-content">
         <h2>Las mejores pupusas de San Pedro Sula</h2>
         <a href="menu.html" class="button">Ver Menú</a>
-        <a href="tel:+50487809196" class="button">Llamar Ahora</a>
+        <a href="ordenar.html" class="button">Ordenar Ahora</a>
     </div>
 </div>
 
@@ -152,6 +175,18 @@ footer {
         📍 San Pedro Sula - Jardines del Valle, Calle 9 10, 21102<br>
         📞 <a href="tel:+50487809196">+504 8780-9196</a>
     </div>
+
+    <div class="map-container">
+        <iframe 
+            src="https://www.google.com/maps?q=San+Pedro+Sula+Jardines+del+Valle+Calle+9+10&output=embed"
+            width="100%" 
+            height="350" 
+            style="border:0;" 
+            allowfullscreen="" 
+            loading="lazy">
+        </iframe>
+    </div>
+
 </section>
 
 <footer>
