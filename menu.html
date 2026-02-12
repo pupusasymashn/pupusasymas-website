@@ -9,139 +9,128 @@
 
 <style>
 
-body {
-    margin: 0;
-    font-family: 'Poppins', sans-serif;
-    background-color: #f5efe6;
-    color: #3b2f2f;
+body{
+    margin:0;
+    font-family:'Poppins',sans-serif;
+    background:#f5efe6;
+    color:#3b2f2f;
 }
 
 /* HEADER */
-header {
-    background: white;
-    padding: 10px 0;
-    text-align: center;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+header{
+    background:white;
+    padding:10px 20px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    box-shadow:0 2px 10px rgba(0,0,0,0.05);
 }
 
-header img {
-    height: 150px;
+header img{
+    height:120px;
 }
 
-nav {
-    margin-top: 5px;
+.cart-icon{
+    position:relative;
+    cursor:pointer;
+    font-weight:600;
 }
 
-nav a {
-    color: #3b2f2f;
-    margin: 0 20px;
-    text-decoration: none;
-    font-weight: 500;
+.cart-count{
+    position:absolute;
+    top:-8px;
+    right:-12px;
+    background:#d6b98c;
+    border-radius:50%;
+    padding:4px 8px;
+    font-size:12px;
 }
 
-/* SECTION */
-section {
-    padding: 80px 20px;
-    max-width: 900px;
-    margin: auto;
+/* MENU */
+section{
+    max-width:900px;
+    margin:auto;
+    padding:30px 20px;
 }
 
-h1 {
-    font-family: 'Playfair Display', serif;
-    text-align: center;
-    margin-bottom: 60px;
-    font-size: 40px;
+h1{
+    font-family:'Playfair Display',serif;
+    text-align:center;
 }
 
-.menu-category {
-    margin-bottom: 60px;
+.menu-item{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin:20px 0;
 }
 
-.menu-category h2 {
-    font-family: 'Playfair Display', serif;
-    border-bottom: 2px solid #d6b98c;
-    padding-bottom: 10px;
-    margin-bottom: 25px;
+.menu-item button{
+    background:#d6b98c;
+    border:none;
+    padding:8px 15px;
+    border-radius:20px;
+    cursor:pointer;
 }
 
-.menu-item {
-    display: flex;
-    justify-content: space-between;
-    margin: 15px 0;
-    font-size: 16px;
+/* CART PANEL */
+.cart{
+    position:fixed;
+    top:0;
+    right:-400px;
+    width:350px;
+    height:100%;
+    background:white;
+    box-shadow:-4px 0 20px rgba(0,0,0,0.15);
+    padding:20px;
+    transition:0.3s;
+    overflow-y:auto;
 }
 
-.menu-item span:last-child {
-    font-weight: 600;
+.cart.active{
+    right:0;
 }
 
-.note {
-    font-size: 14px;
-    color: #7a6a55;
-    margin-top: 10px;
+.cart-item{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin:10px 0;
 }
 
-/* FLOATING ORDER BUTTON */
-.floating-order {
-    position: fixed;
-    bottom: 25px;
-    right: 25px;
-    background: #d6b98c;
-    color: #3b2f2f;
-    padding: 15px 25px;
-    border-radius: 25px;
-    font-weight: 600;
-    text-decoration: none;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-    transition: 0.3s;
+.cart-item button{
+    margin:0 4px;
+    padding:2px 6px;
 }
 
-.floating-order:hover {
-    transform: translateY(-3px);
+.cart-total{
+    font-weight:600;
+    margin-top:15px;
 }
 
-/* CONTACT */
-.contact-section {
-    padding: 100px 20px;
-    max-width: 900px;
-    margin: auto;
+input, select{
+    width:100%;
+    padding:8px;
+    margin:8px 0;
+    border:1px solid #d6b98c;
+    border-radius:6px;
 }
 
-.contact-section h2 {
-    text-align: center;
-    font-family: 'Playfair Display', serif;
-    margin-bottom: 30px;
+.checkout-btn{
+    width:100%;
+    padding:10px;
+    background:#d6b98c;
+    border:none;
+    border-radius:8px;
+    margin-top:10px;
+    cursor:pointer;
 }
 
-.contact-info {
-    text-align: center;
-    line-height: 1.8;
-}
-
-.contact-info a {
-    color: #3b2f2f;
-    text-decoration: none;
-    font-weight: 500;
-}
-
-.map-container {
-    margin-top: 40px;
-    border-radius: 15px;
-    overflow: hidden;
-}
-
-/* FOOTER */
-footer {
-    background: #3b2f2f;
-    color: white;
-    text-align: center;
-    padding: 30px;
-    margin-top: 80px;
-}
-
-/* MOBILE */
-@media(max-width:768px){
-    header img { height: 110px; }
+.success{
+    display:none;
+    text-align:center;
+    padding:40px;
+    font-weight:600;
 }
 
 </style>
@@ -151,96 +140,174 @@ footer {
 
 <header>
     <a href="index.html">
-        <img src="logo.png" alt="Pupusas y Más Logo">
+        <img src="logo.png">
     </a>
-    <nav>
-        <a href="index.html">Inicio</a>
-        <a href="ordenar.html">Ordenar</a>
-    </nav>
+
+    <div class="cart-icon" onclick="toggleCart()">
+        🛒 Carrito
+        <div class="cart-count" id="cartCount">0</div>
+    </div>
 </header>
 
 <section>
-    <h1>Nuestro Menú</h1>
+<h1>Nuestro Menú</h1>
 
-    <div class="menu-category">
-        <h2>Pupusas (Orden de 2)</h2>
-        <div class="menu-item"><span>Mixtas</span><span>80 LPS</span></div>
-        <div class="menu-item"><span>Quesillo</span><span>80 LPS</span></div>
-        <div class="menu-item"><span>Chorizo Quesillo</span><span>80 LPS</span></div>
-        <div class="menu-item"><span>Loroco Quesillo</span><span>80 LPS</span></div>
-        <div class="menu-item"><span>Frijoles Quesillo</span><span>80 LPS</span></div>
-        <div class="menu-item"><span>Revueltas</span><span>90 LPS</span></div>
-        <p class="note">Extras de Repollo y Encurtido — 25 LPS</p>
-    </div>
+<div class="menu-item">
+    <span>Pupusas (80 LPS)</span>
+    <button onclick="addToCart('Pupusas',80)">Agregar</button>
+</div>
 
-    <div class="menu-category">
-        <h2>Baleadas</h2>
-        <div class="menu-item"><span>Sencilla</span><span>25 LPS</span></div>
-        <div class="menu-item"><span>Huevo</span><span>30 LPS</span></div>
-        <div class="menu-item"><span>Sencilla Pollo</span><span>40 LPS</span></div>
-        <div class="menu-item"><span>Huevo Pollo</span><span>50 LPS</span></div>
-        <div class="menu-item"><span>Sencilla Chorizo</span><span>40 LPS</span></div>
-        <div class="menu-item"><span>Huevo Chorizo</span><span>50 LPS</span></div>
-        <div class="menu-item"><span>Sencilla Embutido</span><span>40 LPS</span></div>
-        <div class="menu-item"><span>Huevo Embutido</span><span>50 LPS</span></div>
-    </div>
+<div class="menu-item">
+    <span>Revueltas (90 LPS)</span>
+    <button onclick="addToCart('Revueltas',90)">Agregar</button>
+</div>
 
-    <div class="menu-category">
-        <h2>Desayunos</h2>
-        <div class="menu-item">
-            <span>Desayuno Completo</span>
-            <span>120 LPS</span>
-        </div>
-        <div class="menu-item">
-            <span>Tortillas con Quesillo</span>
-            <span>60 LPS</span>
-        </div>
-    </div>
+<div class="menu-item">
+    <span>Baleadas (25 LPS)</span>
+    <button onclick="addToCart('Baleadas',25)">Agregar</button>
+</div>
 
-    <div class="menu-category">
-        <h2>Almuerzos</h2>
-        <div class="menu-item"><span>Tacos Flauta de Pollo</span><span>120 LPS</span></div>
-        <div class="menu-item"><span>Tacos Mexicanos</span><span>120 LPS</span></div>
-        <div class="menu-item"><span>Gringas de Pollo</span><span>55 LPS C/U</span></div>
-        <div class="menu-item"><span>Plátano Frito</span><span>55 LPS</span></div>
-        <div class="menu-item"><span>Burrita</span><span>45 LPS</span></div>
-        <div class="menu-item"><span>Chuleta, Costilla o Pollo</span><span>140 LPS</span></div>
-    </div>
-
-    <div class="menu-category">
-        <h2>Bebidas</h2>
-        <div class="menu-item"><span>Horchata</span><span>35 LPS</span></div>
-        <div class="menu-item"><span>Limonada</span><span>40 LPS</span></div>
-        <div class="menu-item"><span>Jamaica</span><span>40 LPS</span></div>
-    </div>
+<div class="menu-item">
+    <span>Horchata (35 LPS)</span>
+    <button onclick="addToCart('Horchata',35)">Agregar</button>
+</div>
 
 </section>
 
-<section class="contact-section">
-    <h2>Contáctanos</h2>
-    <div class="contact-info">
-        📍 San Pedro Sula - Jardines del Valle, Calle 9 10, 21102<br>
-        📞 <a href="tel:+50487809196">+504 8780-9196</a><br><br>
-        📸 <a href="https://instagram.com/pupusasymashn" target="_blank">@pupusasymashn</a>
+<!-- CART PANEL -->
+<div class="cart" id="cart">
+    <h2>🛒 Tu Pedido</h2>
+    <div id="cartItems"></div>
+    <div class="cart-total">
+        Total: <span id="cartTotal">0</span> LPS
     </div>
 
-    <div class="map-container">
-        <iframe 
-            src="https://www.google.com/maps?q=San+Pedro+Sula+Jardines+del+Valle+Calle+9+10&output=embed"
-            width="100%" 
-            height="350" 
-            style="border:0;" 
-            allowfullscreen="" 
-            loading="lazy">
-        </iframe>
-    </div>
-</section>
+    <hr>
 
-<a href="ordenar.html" class="floating-order">Ordenar Ahora</a>
+    <input type="text" id="nombre" placeholder="Nombre">
+    <input type="tel" id="telefono" placeholder="Teléfono">
 
-<footer>
-    © 2026 Pupusas y Más | Est. 2019
-</footer>
+    <select id="pickupTime">
+        <option value="">Hora de recogida</option>
+        <option>15 minutos</option>
+        <option>30 minutos</option>
+        <option>45 minutos</option>
+        <option>1 hora</option>
+    </select>
+
+    <button class="checkout-btn" onclick="checkout()">Finalizar Pedido</button>
+</div>
+
+<div id="successMessage" class="success">
+    ✅ Pedido enviado correctamente.
+</div>
+
+<script>
+
+let cart=[];
+
+function toggleCart(){
+    document.getElementById("cart").classList.toggle("active");
+}
+
+function addToCart(name,price){
+    let item=cart.find(i=>i.name===name);
+    if(item){ item.quantity++; }
+    else{ cart.push({name,price,quantity:1}); }
+    renderCart();
+}
+
+function changeQty(index,amount){
+    cart[index].quantity+=amount;
+    if(cart[index].quantity<=0) cart.splice(index,1);
+    renderCart();
+}
+
+function renderCart(){
+    let cartItems=document.getElementById("cartItems");
+    cartItems.innerHTML="";
+    let total=0;
+    let count=0;
+
+    cart.forEach((item,index)=>{
+        total+=item.price*item.quantity;
+        count+=item.quantity;
+
+        cartItems.innerHTML+=`
+        <div class="cart-item">
+            <div>
+                ${item.name}<br>
+                ${item.price} LPS
+            </div>
+            <div>
+                <button onclick="changeQty(${index},-1)">−</button>
+                ${item.quantity}
+                <button onclick="changeQty(${index},1)">+</button>
+            </div>
+        </div>`;
+    });
+
+    document.getElementById("cartTotal").innerText=total;
+    document.getElementById("cartCount").innerText=count;
+}
+
+function checkout(){
+
+    if(cart.length===0){
+        alert("Agrega productos al carrito");
+        return;
+    }
+
+    let nombre=document.getElementById("nombre").value;
+    let telefono=document.getElementById("telefono").value;
+    let pickup=document.getElementById("pickupTime").value;
+
+    let total=0;
+    let orderText="";
+
+    cart.forEach(item=>{
+        orderText+=`• ${item.quantity} ${item.name}\n`;
+        total+=item.price*item.quantity;
+    });
+
+    let emailBody=
+        `Nuevo Pedido - Pupusas y Más\n\n`+
+        `Nombre: ${nombre}\n`+
+        `Teléfono: ${telefono}\n`+
+        `Recoger en: ${pickup}\n\n`+
+        `Pedido:\n${orderText}\n`+
+        `Total: ${total} LPS`;
+
+    // EMAIL SEND
+    fetch("https://formsubmit.co/ajax/pupusasymashn@gmail.com",{
+        method:"POST",
+        headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({
+            name:nombre,
+            message:emailBody,
+            _subject:"Nuevo Pedido - Pupusas y Más"
+        })
+    });
+
+    // WHATSAPP
+    let mensaje=
+        `🛎️ Nuevo Pedido - Pupusas y Más%0A%0A`+
+        `👤 Nombre: ${nombre}%0A`+
+        `📞 Teléfono: ${telefono}%0A`+
+        `⏰ Recoger en: ${pickup}%0A%0A`+
+        `📝 Pedido:%0A${encodeURIComponent(orderText)}%0A`+
+        `💰 Total: ${total} LPS`;
+
+    window.open(`https://wa.me/50487809196?text=${mensaje}`,'_blank');
+
+    document.getElementById("successMessage").style.display="block";
+    document.getElementById("cart").classList.remove("active");
+
+    cart=[];
+    renderCart();
+}
+
+</script>
 
 </body>
 </html>
