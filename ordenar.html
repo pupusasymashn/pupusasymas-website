@@ -57,7 +57,8 @@ h1 {
 }
 
 .menu-item input {
-    width: 60px;
+    width: 70px;
+    padding: 5px;
 }
 
 input, select {
@@ -100,6 +101,10 @@ button {
     margin-top: 40px;
 }
 
+@media(max-width:768px){
+    header img { height: 110px; }
+}
+
 </style>
 </head>
 
@@ -116,26 +121,29 @@ button {
 <section id="orderSection">
     <h1>Haz Tu Pedido</h1>
 
-    <form onsubmit="handleOrder(event)">
+    <form action="https://formsubmit.co/pupusasymashn@gmail.com" method="POST" onsubmit="handleOrder(event)">
+
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_subject" value="Nuevo Pedido - Pupusas y Más">
 
         <div class="menu-item">
             <span>Pupusas (80 LPS)</span>
-            <input type="number" min="0" value="0" data-price="80" onchange="calculateTotal()">
+            <input type="number" name="Pupusas" min="0" value="0" data-price="80" onchange="calculateTotal()">
         </div>
 
         <div class="menu-item">
             <span>Revueltas (90 LPS)</span>
-            <input type="number" min="0" value="0" data-price="90" onchange="calculateTotal()">
+            <input type="number" name="Revueltas" min="0" value="0" data-price="90" onchange="calculateTotal()">
         </div>
 
         <div class="menu-item">
             <span>Baleadas Sencillas (25 LPS)</span>
-            <input type="number" min="0" value="0" data-price="25" onchange="calculateTotal()">
+            <input type="number" name="Baleadas" min="0" value="0" data-price="25" onchange="calculateTotal()">
         </div>
 
         <div class="menu-item">
             <span>Horchata (35 LPS)</span>
-            <input type="number" min="0" value="0" data-price="35" onchange="calculateTotal()">
+            <input type="number" name="Horchata" min="0" value="0" data-price="35" onchange="calculateTotal()">
         </div>
 
         <div class="total-box">
@@ -143,13 +151,13 @@ button {
         </div>
 
         <label>Nombre</label>
-        <input type="text" id="nombre" required>
+        <input type="text" name="Nombre" id="nombre" required>
 
         <label>Teléfono</label>
-        <input type="tel" id="telefono" required>
+        <input type="tel" name="Telefono" id="telefono" required>
 
         <label>Hora de recogida</label>
-        <select id="pickupTime" required>
+        <select name="Hora" id="pickupTime" required>
             <option value="">Selecciona hora</option>
             <option>15 minutos</option>
             <option>30 minutos</option>
@@ -164,7 +172,7 @@ button {
 
 <div id="successMessage" class="success-message">
     ✅ Pedido enviado correctamente.<br>
-    Te contactaremos pronto.
+    Revisa WhatsApp para confirmar.
 </div>
 
 <div class="footer">
@@ -183,7 +191,6 @@ function calculateTotal() {
 }
 
 function handleOrder(event) {
-    event.preventDefault();
 
     let nombre = document.getElementById("nombre").value;
     let telefono = document.getElementById("telefono").value;
