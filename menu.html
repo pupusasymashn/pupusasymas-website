@@ -18,7 +18,7 @@ body{
 /* HEADER */
 header{
     background:white;
-    padding:10px 20px;
+    padding:10px 30px;
     display:flex;
     justify-content:space-between;
     align-items:center;
@@ -30,16 +30,16 @@ header img{ height:120px; }
 .cart-icon{
     position:relative;
     cursor:pointer;
-    font-weight:600;
+    font-size:18px;
 }
 
 .cart-count{
     position:absolute;
-    top:-8px;
-    right:-12px;
+    top:-6px;
+    right:-10px;
     background:#d6b98c;
     border-radius:50%;
-    padding:4px 8px;
+    padding:4px 7px;
     font-size:12px;
 }
 
@@ -47,7 +47,7 @@ header img{ height:120px; }
 section{
     max-width:1000px;
     margin:auto;
-    padding:30px 20px;
+    padding:40px 20px;
 }
 
 h1{
@@ -61,14 +61,27 @@ h1{
 
 .category h2{
     border-bottom:2px solid #d6b98c;
-    padding-bottom:5px;
+    padding-bottom:6px;
 }
 
 .menu-item{
     display:flex;
     justify-content:space-between;
     align-items:center;
-    margin:15px 0;
+    margin:14px 0;
+}
+
+.controls{
+    display:flex;
+    align-items:center;
+}
+
+.add-btn{
+    background:#d6b98c;
+    border:none;
+    padding:6px 14px;
+    border-radius:20px;
+    cursor:pointer;
 }
 
 .qty-controls{
@@ -77,19 +90,11 @@ h1{
 }
 
 .qty-controls button{
-    padding:3px 8px;
-    margin:0 5px;
+    padding:2px 8px;
+    margin:0 6px;
 }
 
-.menu-item button.add-btn{
-    background:#d6b98c;
-    border:none;
-    padding:6px 12px;
-    border-radius:20px;
-    cursor:pointer;
-}
-
-/* CART */
+/* CART PANEL */
 .cart{
     position:fixed;
     top:0;
@@ -119,7 +124,13 @@ h1{
 .cart-item{
     display:flex;
     justify-content:space-between;
+    align-items:center;
     margin:10px 0;
+}
+
+.remove{
+    cursor:pointer;
+    color:red;
 }
 
 .cart-total{
@@ -151,7 +162,6 @@ input,select{
     padding:40px;
     font-weight:600;
 }
-
 </style>
 </head>
 
@@ -160,7 +170,7 @@ input,select{
 <header>
     <a href="index.html"><img src="logo.png"></a>
     <div class="cart-icon" onclick="toggleCart()">
-        🛒 Carrito
+        🛒
         <div class="cart-count" id="cartCount">0</div>
     </div>
 </header>
@@ -168,49 +178,27 @@ input,select{
 <section>
 <h1>Nuestro Menú</h1>
 
-<!-- PUPUSAS -->
 <div class="category">
 <h2>Pupusas</h2>
 
 <div class="menu-item">
 <span>Mixtas - 80 LPS</span>
-<div>
-<div class="qty-controls">
-<button onclick="changeQty('Mixtas',-1)">−</button>
-<span id="Mixtas-qty">1</span>
-<button onclick="changeQty('Mixtas',1)">+</button>
-</div>
-<button class="add-btn" onclick="addToCart('Mixtas',80)">Agregar</button>
+<div class="controls" id="Mixtas-control">
+<button class="add-btn" onclick="addItem('Mixtas',80)">Agregar</button>
 </div>
 </div>
 
 <div class="menu-item">
 <span>Revueltas - 90 LPS</span>
-<div>
-<div class="qty-controls">
-<button onclick="changeQty('Revueltas',-1)">−</button>
-<span id="Revueltas-qty">1</span>
-<button onclick="changeQty('Revueltas',1)">+</button>
-</div>
-<button class="add-btn" onclick="addToCart('Revueltas',90)">Agregar</button>
+<div class="controls" id="Revueltas-control">
+<button class="add-btn" onclick="addItem('Revueltas',90)">Agregar</button>
 </div>
 </div>
-
-</div>
-
-<!-- BALEADAS -->
-<div class="category">
-<h2>Baleadas</h2>
 
 <div class="menu-item">
-<span>Sencilla - 25 LPS</span>
-<div>
-<div class="qty-controls">
-<button onclick="changeQty('Sencilla',-1)">−</button>
-<span id="Sencilla-qty">1</span>
-<button onclick="changeQty('Sencilla',1)">+</button>
-</div>
-<button class="add-btn" onclick="addToCart('Sencilla',25)">Agregar</button>
+<span>Quesillo - 80 LPS</span>
+<div class="controls" id="Quesillo-control">
+<button class="add-btn" onclick="addItem('Quesillo',80)">Agregar</button>
 </div>
 </div>
 
@@ -218,7 +206,7 @@ input,select{
 
 </section>
 
-<!-- CART PANEL -->
+<!-- CART -->
 <div class="cart" id="cart">
 <div class="cart-header">
 <h2>🛒 Tu Pedido</h2>
@@ -254,31 +242,41 @@ Total: <span id="cartTotal">0</span> LPS
 
 <script>
 
-let cart=[];
-let qtyStore={};
+let cart={};
 
 function toggleCart(){
 document.getElementById("cart").classList.toggle("active");
 }
 
-function changeQty(name,amount){
-if(!qtyStore[name]) qtyStore[name]=1;
-qtyStore[name]+=amount;
-if(qtyStore[name]<1) qtyStore[name]=1;
-document.getElementById(name+"-qty").innerText=qtyStore[name];
+function addItem(name,price){
+cart[name]={price:price,qty:1};
+renderMenuControl(name);
+renderCart();
 }
 
-function addToCart(name,price){
-let qty=qtyStore[name]||1;
-let existing=cart.find(i=>i.name===name);
-
-if(existing){ existing.quantity+=qty; }
-else{ cart.push({name,price,quantity:qty}); }
-
-qtyStore[name]=1;
-document.getElementById(name+"-qty").innerText=1;
-
+function changeQty(name,amount){
+cart[name].qty+=amount;
+if(cart[name].qty<=0){
+delete cart[name];
+resetControl(name);
+}
 renderCart();
+renderMenuControl(name);
+}
+
+function resetControl(name){
+document.getElementById(name+"-control").innerHTML=
+`<button class="add-btn" onclick="addItem('${name}',${cart[name]?.price||0})">Agregar</button>`;
+}
+
+function renderMenuControl(name){
+if(!cart[name]) return;
+document.getElementById(name+"-control").innerHTML=
+`<div class="qty-controls">
+<button onclick="changeQty('${name}',-1)">−</button>
+${cart[name].qty}
+<button onclick="changeQty('${name}',1)">+</button>
+</div>`;
 }
 
 function renderCart(){
@@ -287,16 +285,17 @@ cartItems.innerHTML="";
 let total=0;
 let count=0;
 
-cart.forEach((item,index)=>{
-total+=item.price*item.quantity;
-count+=item.quantity;
+for(let item in cart){
+total+=cart[item].price*cart[item].qty;
+count+=cart[item].qty;
 
 cartItems.innerHTML+=`
 <div class="cart-item">
-${item.quantity} ${item.name}
-<span>${item.price*item.quantity} LPS</span>
+${cart[item].qty} ${item}
+<span>${cart[item].price*cart[item].qty} LPS</span>
+<span class="remove" onclick="changeQty('${item}',-999)">🗑</span>
 </div>`;
-});
+}
 
 document.getElementById("cartTotal").innerText=total;
 document.getElementById("cartCount").innerText=count;
@@ -304,7 +303,10 @@ document.getElementById("cartCount").innerText=count;
 
 function checkout(){
 
-if(cart.length===0){ alert("Agrega productos al carrito"); return; }
+if(Object.keys(cart).length===0){
+alert("Agrega productos al carrito");
+return;
+}
 
 let nombre=document.getElementById("nombre").value;
 let telefono=document.getElementById("telefono").value;
@@ -313,10 +315,10 @@ let pickup=document.getElementById("pickupTime").value;
 let total=0;
 let orderText="";
 
-cart.forEach(item=>{
-orderText+=`• ${item.quantity} ${item.name}\n`;
-total+=item.price*item.quantity;
-});
+for(let item in cart){
+orderText+=`• ${cart[item].qty} ${item}\n`;
+total+=cart[item].price*cart[item].qty;
+}
 
 let emailBody=
 `Nuevo Pedido - Pupusas y Más\n\n`+
@@ -347,9 +349,8 @@ let mensaje=
 window.open(`https://wa.me/50487809196?text=${mensaje}`,'_blank');
 
 document.getElementById("successMessage").style.display="block";
-document.getElementById("cart").classList.remove("active");
-
-cart=[];
+toggleCart();
+cart={};
 renderCart();
 }
 
