@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Pupusas y Más | Est. 2019</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 
 <style>
 
@@ -26,7 +26,7 @@ header {
 }
 
 header img {
-    height: 60px;
+    height: 65px;
 }
 
 .language-toggle {
@@ -61,46 +61,71 @@ nav a {
 }
 
 .hero-content {
-    background: rgba(0,0,0,0.6);
-    padding: 50px;
-    border-radius: 10px;
+    background: rgba(0,0,0,0.65);
+    padding: 60px;
+    border-radius: 12px;
 }
 
 .hero h2 {
-    font-size: 40px;
+    font-size: 42px;
     font-family: 'Playfair Display', serif;
 }
 
 .button {
     display: inline-block;
     margin-top: 20px;
-    padding: 12px 30px;
+    padding: 12px 35px;
     background: #b83232;
     color: white;
     text-decoration: none;
     border-radius: 5px;
+    font-weight: 600;
 }
 
 section {
-    padding: 90px 20px;
-    max-width: 1000px;
+    padding: 100px 20px;
+    max-width: 1100px;
     margin: auto;
 }
 
 h2 {
     font-family: 'Playfair Display', serif;
     text-align: center;
+    margin-bottom: 40px;
+}
+
+.menu-category {
+    margin-top: 50px;
+}
+
+.menu-category h3 {
+    border-bottom: 2px solid #b83232;
+    padding-bottom: 10px;
+    font-family: 'Playfair Display', serif;
+}
+
+.menu-item {
+    display: flex;
+    justify-content: space-between;
+    margin: 12px 0;
+    font-weight: 500;
+}
+
+.menu-note {
+    font-size: 14px;
+    margin-top: 10px;
+    color: #7a1f1f;
 }
 
 .gallery {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 15px;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
 }
 
 .gallery img {
     width: 100%;
-    border-radius: 8px;
+    border-radius: 10px;
 }
 
 .contact-info {
@@ -112,7 +137,7 @@ footer {
     background: #7a1f1f;
     color: white;
     text-align: center;
-    padding: 20px;
+    padding: 25px;
 }
 
 @media(max-width:768px){
@@ -128,7 +153,7 @@ footer {
     <img src="logo.png" alt="Pupusas y Más Logo">
     <div class="language-toggle" onclick="toggleLanguage()">ES | EN</div>
     <nav>
-        <a href="#about">Nosotros</a>
+        <a href="#menu">Menú</a>
         <a href="#gallery">Galería</a>
         <a href="#contact">Contacto</a>
     </nav>
@@ -142,12 +167,55 @@ footer {
     </div>
 </div>
 
-<section id="about">
-    <h2 id="about-title">Sobre Nosotros</h2>
-    <p id="about-text">
-        Desde 2019, en Pupusas y Más llevamos el auténtico sabor salvadoreño a San Pedro Sula.
-        Cada pupusa es preparada al momento con recetas tradicionales y el cariño de casa.
-    </p>
+<section id="menu">
+    <h2 id="menu-title">Nuestro Menú</h2>
+
+    <div class="menu-category">
+        <h3>Pupusas (Orden de 2)</h3>
+        <div class="menu-item"><span>Mixtas</span><span>80 LPS</span></div>
+        <div class="menu-item"><span>Quesillo</span><span>80 LPS</span></div>
+        <div class="menu-item"><span>Chorizo Quesillo</span><span>80 LPS</span></div>
+        <div class="menu-item"><span>Loroco Quesillo</span><span>80 LPS</span></div>
+        <div class="menu-item"><span>Frijoles Quesillo</span><span>80 LPS</span></div>
+        <div class="menu-item"><span>Revueltas</span><span>90 LPS</span></div>
+        <p class="menu-note">Extras de Repollo y Encurtido — 25 LPS</p>
+    </div>
+
+    <div class="menu-category">
+        <h3>Baleadas</h3>
+        <div class="menu-item"><span>Sencilla</span><span>25 LPS</span></div>
+        <div class="menu-item"><span>Huevo</span><span>30 LPS</span></div>
+        <div class="menu-item"><span>Sencilla Pollo</span><span>40 LPS</span></div>
+        <div class="menu-item"><span>Huevo Pollo</span><span>50 LPS</span></div>
+        <div class="menu-item"><span>Sencilla Chorizo</span><span>40 LPS</span></div>
+        <div class="menu-item"><span>Huevo Chorizo</span><span>50 LPS</span></div>
+        <div class="menu-item"><span>Sencilla Embutido</span><span>40 LPS</span></div>
+        <div class="menu-item"><span>Huevo Embutido</span><span>50 LPS</span></div>
+    </div>
+
+    <div class="menu-category">
+        <h3>Desayunos</h3>
+        <div class="menu-item"><span>Desayuno Completo</span><span>120 LPS</span></div>
+        <div class="menu-item"><span>Tortillas con Quesillo</span><span>60 LPS</span></div>
+    </div>
+
+    <div class="menu-category">
+        <h3>Almuerzos</h3>
+        <div class="menu-item"><span>Tacos Flauta de Pollo</span><span>120 LPS</span></div>
+        <div class="menu-item"><span>Tacos Mexicanos</span><span>120 LPS</span></div>
+        <div class="menu-item"><span>Gringas de Pollo</span><span>55 LPS C/U</span></div>
+        <div class="menu-item"><span>Plátano Frito</span><span>55 LPS</span></div>
+        <div class="menu-item"><span>Burrita</span><span>45 LPS</span></div>
+        <div class="menu-item"><span>Chuleta, Costilla o Pollo</span><span>140 LPS</span></div>
+    </div>
+
+    <div class="menu-category">
+        <h3>Bebidas</h3>
+        <div class="menu-item"><span>Horchata</span><span>35 LPS</span></div>
+        <div class="menu-item"><span>Limonada</span><span>40 LPS</span></div>
+        <div class="menu-item"><span>Jamaica</span><span>40 LPS</span></div>
+    </div>
+
 </section>
 
 <section id="gallery">
@@ -185,15 +253,13 @@ function toggleLanguage(){
         document.getElementById("hero-title").innerText = "Authentic Salvadoran Flavor";
         document.getElementById("hero-text").innerText = "Handmade pupusas prepared fresh daily with traditional ingredients.";
         document.getElementById("order-btn").innerText = "Order Now";
-        document.getElementById("about-title").innerText = "About Us";
-        document.getElementById("about-text").innerText = "Since 2019, Pupusas y Más has brought authentic Salvadoran flavor to San Pedro Sula. Every pupusa is handmade with traditional recipes and homemade care.";
+        document.getElementById("menu-title").innerText = "Our Menu";
         document.getElementById("contact-title").innerText = "Contact Us";
     } else {
         document.getElementById("hero-title").innerText = "Sabor Salvadoreño Auténtico";
         document.getElementById("hero-text").innerText = "Pupusas hechas a mano todos los días con ingredientes frescos y tradicionales.";
         document.getElementById("order-btn").innerText = "Ordenar Ahora";
-        document.getElementById("about-title").innerText = "Sobre Nosotros";
-        document.getElementById("about-text").innerText = "Desde 2019, en Pupusas y Más llevamos el auténtico sabor salvadoreño a San Pedro Sula. Cada pupusa es preparada al momento con recetas tradicionales y el cariño de casa.";
+        document.getElementById("menu-title").innerText = "Nuestro Menú";
         document.getElementById("contact-title").innerText = "Contáctanos";
     }
 }
