@@ -3,202 +3,147 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pupusas y Más | Est. 2019</title>
+<title>Pupusas y Más</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 
 <style>
-
-body {
-    margin: 0;
-    font-family: 'Poppins', sans-serif;
-    background-color: #f5efe6;
-    color: #3b2f2f;
+body{
+margin:0;
+font-family:'Poppins',sans-serif;
+background:#f5efe6;
+color:#3b2f2f;
 }
 
-/* HEADER - FIXED CLEAN */
-header {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    background: white;
-    padding: 5px 0;
-    text-align: center;
-    z-index: 1000;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+header{
+background:white;
+padding:15px 30px;
+text-align:center;
+box-shadow:0 2px 10px rgba(0,0,0,0.05);
+position:sticky;
+top:0;
+z-index:1000;
 }
 
-header img {
-    height: 190px; /* MUCH BIGGER LOGO */
+header img{
+height:140px;
+cursor:pointer;
 }
 
-nav {
-    margin-top: 5px;
+.hero{
+text-align:center;
+padding:60px 20px 40px 20px;
 }
 
-nav a {
-    color: #3b2f2f;
-    margin: 0 20px;
-    text-decoration: none;
-    font-weight: 500;
+.hero h1{
+font-family:'Playfair Display',serif;
+font-size:32px;
+margin-bottom:20px;
 }
 
-/* HERO */
-.hero {
-    height: 100vh;
-    background: url('pupusa1.jpg') center/cover no-repeat;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    color: white;
-    padding: 20px;
-    margin-top: 210px; /* match header height */
+.btn{
+display:inline-block;
+padding:12px 28px;
+background:#d6b98c;
+color:#3b2f2f;
+border-radius:30px;
+text-decoration:none;
+font-weight:500;
+transition:0.2s;
 }
 
-.hero-content {
-    background: rgba(0,0,0,0.55);
-    padding: 70px;
-    border-radius: 15px;
+.btn:hover{
+transform:scale(1.05);
 }
 
-.hero h2 {
-    font-size: 44px;
-    font-family: 'Playfair Display', serif;
-    margin-bottom: 20px;
+.gallery{
+display:flex;
+gap:20px;
+justify-content:center;
+flex-wrap:wrap;
+padding:40px 20px;
 }
 
-.button {
-    display: inline-block;
-    margin: 15px 10px;
-    padding: 12px 35px;
-    background: #d6b98c;
-    color: #3b2f2f;
-    text-decoration: none;
-    border-radius: 5px;
-    font-weight: 600;
+.gallery img{
+width:400px;
+height:300px;
+object-fit:cover;
+border-radius:16px;
+box-shadow:0 8px 25px rgba(0,0,0,0.1);
 }
 
-/* SECTIONS */
-section {
-    padding: 120px 20px;
-    max-width: 1000px;
-    margin: auto;
+.section{
+padding:60px 20px;
+text-align:center;
 }
 
-h2 {
-    font-family: 'Playfair Display', serif;
-    text-align: center;
-    margin-bottom: 50px;
+.section h2{
+font-family:'Playfair Display',serif;
+margin-bottom:20px;
 }
 
-/* GALLERY */
-.gallery {
-    display: flex;
-    gap: 40px;
-    justify-content: center;
-    flex-wrap: wrap;
+.contact-info{
+max-width:600px;
+margin:auto;
+line-height:1.8;
 }
 
-.gallery img {
-    width: 450px;
-    height: 350px;
-    object-fit: cover;
-    border-radius: 15px;
+.map-container{
+max-width:800px;
+margin:40px auto 0 auto;
 }
-
-/* CONTACT */
-.contact-info {
-    text-align: center;
-    line-height: 1.8;
-}
-
-.contact-info a {
-    color: #3b2f2f;
-    text-decoration: none;
-    font-weight: 500;
-}
-
-/* MAP */
-.map-container {
-    margin-top: 40px;
-    border-radius: 15px;
-    overflow: hidden;
-}
-
-/* FOOTER */
-footer {
-    background: #3b2f2f;
-    color: white;
-    text-align: center;
-    padding: 30px;
-}
-
-/* MOBILE */
-@media(max-width:768px){
-    header img { height: 120px; }
-    .hero { margin-top: 160px; }
-    .hero h2 { font-size: 28px; }
-    .gallery img {
-        width: 100%;
-        height: 250px;
-    }
-}
-
 </style>
 </head>
 
 <body>
 
 <header>
-    <a href="index.html">
-        <img src="logo.png" alt="Pupusas y Más Logo">
-    </a>
-    <nav>
-        <a href="menu.html">Menú</a>
-        <a href="ordenar.html">Ordenar</a>
-    </nav>
+<a href="index.html">
+<img src="logo.png" alt="Pupusas y Más Logo">
+</a>
 </header>
 
-<div class="hero">
-    <div class="hero-content">
-        <h2>Las mejores pupusas de San Pedro Sula</h2>
-        <a href="menu.html" class="button">Ver Menú</a>
-        <a href="ordenar.html" class="button">Ordenar Ahora</a>
-    </div>
+<section class="hero">
+<h1>Las mejores pupusas de San Pedro Sula</h1>
+<a href="menu.html" class="btn">Ordenar Ahora</a>
+</section>
+
+<section class="gallery">
+<img src="images/IMG_9669.JPG" alt="Pupusas">
+<img src="images/IMG_9670.JPG" alt="Comida">
+</section>
+
+<section class="section">
+<h2>Contáctanos</h2>
+<div class="contact-info">
+<p><strong>📍 Dirección:</strong><br>
+San Pedro Sula - Jardines del Valle, Calle 9 10, 21102</p>
+
+<p><strong>📞 Teléfono:</strong><br>
++504 8780-9196</p>
+
+<p><strong>📸 Instagram:</strong><br>
+<a href="https://instagram.com/pupusasymas" target="_blank">@pupusasymas</a></p>
+
+<p><strong>🕒 Horarios:</strong><br>
+Lunes a Sábado<br>
+7:30 AM – 1:30 PM<br>
+5:00 PM – 9:00 PM</p>
 </div>
 
-<section id="gallery">
-    <h2>Galería</h2>
-    <div class="gallery">
-        <img src="pupusa1.jpg">
-        <img src="pupusa2.jpg">
-    </div>
+<div class="map-container">
+<iframe 
+  src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d660.2362165103755!2d-88.02779429924331!3d15.53596381185558!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f665b198081f02b%3A0x258d1362a602e9ee!2sPupusas%20y%20m%C3%A1s...!5e0!3m2!1sen!2scl!4v1770876243560!5m2!1sen!2scl"
+  width="100%"
+  height="320"
+  style="border:0; border-radius:14px; box-shadow:0 8px 25px rgba(0,0,0,0.1);"
+  allowfullscreen=""
+  loading="lazy"
+  referrerpolicy="no-referrer-when-downgrade">
+</iframe>
+</div>
+
 </section>
-
-<section id="contact">
-    <h2>Contáctanos</h2>
-    <div class="contact-info">
-        📍 San Pedro Sula - Jardines del Valle, Calle 9 10, 21102<br>
-        📞 <a href="tel:+50487809196">+504 8780-9196</a><br><br>
-        📸 <a href="https://instagram.com/pupusasymashn" target="_blank">@pupusasymashn</a>
-    </div>
-
-    <div class="map-container">
-        <iframe 
-            src="https://www.google.com/maps?q=San+Pedro+Sula+Jardines+del+Valle+Calle+9+10&output=embed"
-            width="100%" 
-            height="350" 
-            style="border:0;" 
-            allowfullscreen="" 
-            loading="lazy">
-        </iframe>
-    </div>
-</section>
-
-<footer>
-    © 2026 Pupusas y Más | Est. 2019
-</footer>
 
 </body>
 </html>
