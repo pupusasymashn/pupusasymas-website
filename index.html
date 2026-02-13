@@ -64,6 +64,7 @@ background:rgba(0,0,0,0.4);
 .hero-content{
 position:relative;
 z-index:2;
+padding:0 20px;
 }
 
 .hero h1{
@@ -153,6 +154,50 @@ padding:20px;
 background:white;
 margin-top:40px;
 font-size:14px;
+}
+
+/* =======================
+   MOBILE RESPONSIVE FIX
+======================= */
+@media (max-width: 768px){
+
+header img{
+height:120px;
+}
+
+.hero{
+height:420px;
+}
+
+.hero h1{
+font-size:28px;
+line-height:1.3;
+}
+
+.hero button{
+padding:12px 24px;
+font-size:14px;
+}
+
+.gallery{
+flex-direction:column;
+gap:25px;
+padding:40px 20px;
+}
+
+.gallery img{
+width:100%;
+height:250px;
+}
+
+.contact{
+padding:40px 20px;
+}
+
+.map iframe{
+height:250px;
+}
+
 }
 </style>
 </head>
