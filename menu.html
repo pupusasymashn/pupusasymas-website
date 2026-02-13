@@ -15,6 +15,7 @@ background:#f5efe6;
 color:#3b2f2f;
 }
 
+/* HEADER */
 header{
 background:white;
 padding:15px 30px;
@@ -22,8 +23,12 @@ box-shadow:0 2px 10px rgba(0,0,0,0.05);
 text-align:center;
 }
 
-header img{ height:120px; }
+header img{
+height:130px;
+cursor:pointer;
+}
 
+/* SECTION */
 section{
 max-width:1000px;
 margin:auto;
@@ -36,6 +41,7 @@ font-family:'Playfair Display',serif;
 margin-bottom:40px;
 }
 
+/* CATEGORY */
 .category{
 margin-top:60px;
 }
@@ -52,6 +58,7 @@ opacity:0.6;
 margin-bottom:10px;
 }
 
+/* MENU ITEMS */
 .menu-item{
 display:flex;
 justify-content:space-between;
@@ -72,8 +79,7 @@ border-radius:25px;
 cursor:pointer;
 transition:0.2s;
 font-family:'Poppins',sans-serif;
-font-weight:400;
-font-size:14px;
+color:#3b2f2f !important;
 }
 
 .add-btn:hover{
@@ -92,8 +98,6 @@ border:none;
 background:#d6b98c;
 border-radius:15px;
 cursor:pointer;
-font-family:'Poppins',sans-serif;
-font-weight:500;
 }
 
 /* FLOATING CART */
@@ -168,15 +172,34 @@ cursor:pointer;
 font-size:22px;
 }
 
+/* ALIGNED CART ITEMS */
 .cart-item{
-display:flex;
-justify-content:space-between;
+display:grid;
+grid-template-columns:1fr auto auto;
+align-items:center;
+gap:10px;
 margin:12px 0;
 }
 
-.remove{
+.cart-item span.price{
+min-width:90px;
+text-align:right;
+font-weight:500;
+}
+
+.remove-btn{
+background:none;
+border:1px solid #d6b98c;
+padding:4px 10px;
+border-radius:6px;
 cursor:pointer;
-color:red;
+font-size:13px;
+color:#3b2f2f;
+transition:0.2s;
+}
+
+.remove-btn:hover{
+background:#d6b98c;
 }
 
 .cart-total{
@@ -190,7 +213,6 @@ padding:8px;
 margin:8px 0;
 border:1px solid #d6b98c;
 border-radius:6px;
-font-family:'Poppins',sans-serif;
 }
 
 .checkout-btn{
@@ -202,7 +224,6 @@ border-radius:8px;
 margin-top:10px;
 cursor:pointer;
 font-weight:600;
-font-family:'Poppins',sans-serif;
 }
 
 .closed-message{
@@ -212,27 +233,16 @@ text-align:center;
 margin-top:10px;
 }
 
-/* CONFIRMATION BOX */
-.confirmation-box{
-position:fixed;
-top:50%;
-left:50%;
-transform:translate(-50%, -50%) scale(0.9);
-background:white;
-padding:25px 35px;
-border-radius:12px;
-box-shadow:0 10px 30px rgba(0,0,0,0.2);
-font-family:'Poppins',sans-serif;
-font-weight:500;
-opacity:0;
-pointer-events:none;
-transition:all 0.3s ease;
-z-index:2000;
+/* MOBILE */
+@media (max-width:768px){
+.menu-item{
+flex-direction:column;
+align-items:flex-start;
+gap:8px;
 }
-
-.confirmation-box.active{
-opacity:1;
-transform:translate(-50%, -50%) scale(1);
+.cart{
+width:100%;
+}
 }
 </style>
 </head>
@@ -246,23 +256,23 @@ transform:translate(-50%, -50%) scale(1);
 <section>
 <h1>Nuestro Menú</h1>
 
-<!-- FULL MENU (ALL CATEGORIES RESTORED) -->
-
 <!-- PUPUSAS -->
 <div class="category">
 <h2>Pupusas (Orden de 2)</h2>
+
 <div class="menu-item"><span>Mixtas – 80 LPS</span><div class="controls" id="Mixtas-control"><button class="add-btn" onclick="addItem('Mixtas',80)">Agregar</button></div></div>
 <div class="menu-item"><span>Quesillo – 80 LPS</span><div class="controls" id="Quesillo-control"><button class="add-btn" onclick="addItem('Quesillo',80)">Agregar</button></div></div>
 <div class="menu-item"><span>Chorizo Quesillo – 80 LPS</span><div class="controls" id="ChorizoQuesillo-control"><button class="add-btn" onclick="addItem('Chorizo Quesillo',80)">Agregar</button></div></div>
 <div class="menu-item"><span>Loroco Quesillo – 80 LPS</span><div class="controls" id="LorocoQuesillo-control"><button class="add-btn" onclick="addItem('Loroco Quesillo',80)">Agregar</button></div></div>
 <div class="menu-item"><span>Frijoles Quesillo – 80 LPS</span><div class="controls" id="FrijolesQuesillo-control"><button class="add-btn" onclick="addItem('Frijoles Quesillo',80)">Agregar</button></div></div>
 <div class="menu-item"><span>Revueltas – 90 LPS</span><div class="controls" id="Revueltas-control"><button class="add-btn" onclick="addItem('Revueltas',90)">Agregar</button></div></div>
-<div class="menu-item"><span>Extra Repollo y Encurtido – 25 LPS</span><div class="controls" id="ExtraRepollo-control"><button class="add-btn" onclick="addItem('Extra Repollo y Encurtido',25)">Agregar</button></div></div>
+<div class="menu-item"><span>Extra Repollo y Encurtido – 25 LPS</span><div class="controls" id="ExtraRepolloyEncurtido-control"><button class="add-btn" onclick="addItem('Extra Repollo y Encurtido',25)">Agregar</button></div></div>
 </div>
 
 <!-- BALEADAS -->
 <div class="category">
 <h2>Baleadas</h2>
+
 <div class="menu-item"><span>Sencilla – 25 LPS</span><div class="controls" id="Sencilla-control"><button class="add-btn" onclick="addItem('Sencilla',25)">Agregar</button></div></div>
 <div class="menu-item"><span>Huevo – 30 LPS</span><div class="controls" id="Huevo-control"><button class="add-btn" onclick="addItem('Huevo',30)">Agregar</button></div></div>
 <div class="menu-item"><span>Sencilla Pollo – 40 LPS</span><div class="controls" id="SencillaPollo-control"><button class="add-btn" onclick="addItem('Sencilla Pollo',40)">Agregar</button></div></div>
@@ -276,25 +286,28 @@ transform:translate(-50%, -50%) scale(1);
 <!-- DESAYUNOS -->
 <div class="category">
 <h2>Desayunos</h2>
+
 <div class="menu-item"><span>Desayuno Completo – 120 LPS</span><div class="controls" id="DesayunoCompleto-control"><button class="add-btn" onclick="addItem('Desayuno Completo',120)">Agregar</button></div></div>
-<div class="menu-item"><span>Tortillas con Quesillo (Orden de 2) – 60 LPS</span><div class="controls" id="Tortillas-control"><button class="add-btn" onclick="addItem('Tortillas con Quesillo',60)">Agregar</button></div></div>
+<div class="menu-item"><span>Tortillas con Quesillo (Orden de 2) – 60 LPS</span><div class="controls" id="TortillasconQuesillo-control"><button class="add-btn" onclick="addItem('Tortillas con Quesillo',60)">Agregar</button></div></div>
 </div>
 
 <!-- ALMUERZOS -->
 <div class="category">
 <h2>Almuerzos</h2>
 <div class="note">12:00PM – 1:30PM</div>
-<div class="menu-item"><span>Tacos Flauta de Pollo – 120 LPS</span><div class="controls" id="TacosFlauta-control"><button class="add-btn" onclick="addItem('Tacos Flauta de Pollo',120)">Agregar</button></div></div>
+
+<div class="menu-item"><span>Tacos Flauta de Pollo – 120 LPS</span><div class="controls" id="TacosFlautadePollo-control"><button class="add-btn" onclick="addItem('Tacos Flauta de Pollo',120)">Agregar</button></div></div>
 <div class="menu-item"><span>Tacos Mexicanos – 120 LPS</span><div class="controls" id="TacosMexicanos-control"><button class="add-btn" onclick="addItem('Tacos Mexicanos',120)">Agregar</button></div></div>
-<div class="menu-item"><span>Gringas de Pollo – 55 LPS</span><div class="controls" id="Gringas-control"><button class="add-btn" onclick="addItem('Gringas de Pollo',55)">Agregar</button></div></div>
-<div class="menu-item"><span>Plátano Frito – 55 LPS</span><div class="controls" id="Platano-control"><button class="add-btn" onclick="addItem('Plátano Frito',55)">Agregar</button></div></div>
+<div class="menu-item"><span>Gringas de Pollo – 55 LPS</span><div class="controls" id="GringasdePollo-control"><button class="add-btn" onclick="addItem('Gringas de Pollo',55)">Agregar</button></div></div>
+<div class="menu-item"><span>Plátano Frito – 55 LPS</span><div class="controls" id="PlátanoFrito-control"><button class="add-btn" onclick="addItem('Plátano Frito',55)">Agregar</button></div></div>
 <div class="menu-item"><span>Burrita – 45 LPS</span><div class="controls" id="Burrita-control"><button class="add-btn" onclick="addItem('Burrita',45)">Agregar</button></div></div>
-<div class="menu-item"><span>Chuleta, Costilla o Pollo – 140 LPS</span><div class="controls" id="Chuleta-control"><button class="add-btn" onclick="addItem('Chuleta / Costilla / Pollo',140)">Agregar</button></div></div>
+<div class="menu-item"><span>Chuleta, Costilla o Pollo – 140 LPS</span><div class="controls" id="ChuletaCostillaoPollo-control"><button class="add-btn" onclick="addItem('Chuleta / Costilla / Pollo',140)">Agregar</button></div></div>
 </div>
 
 <!-- BEBIDAS -->
 <div class="category">
 <h2>Bebidas</h2>
+
 <div class="menu-item"><span>Horchata – 35 LPS</span><div class="controls" id="Horchata-control"><button class="add-btn" onclick="addItem('Horchata',35)">Agregar</button></div></div>
 <div class="menu-item"><span>Limonada – 40 LPS</span><div class="controls" id="Limonada-control"><button class="add-btn" onclick="addItem('Limonada',40)">Agregar</button></div></div>
 <div class="menu-item"><span>Jamaica – 40 LPS</span><div class="controls" id="Jamaica-control"><button class="add-btn" onclick="addItem('Jamaica',40)">Agregar</button></div></div>
@@ -302,17 +315,27 @@ transform:translate(-50%, -50%) scale(1);
 
 </section>
 
-<div class="cart-float" onclick="toggleCart()">🛒 Carrito <span class="cart-count" id="cartCount">0</span></div>
+<div class="cart-float" onclick="toggleCart()">
+🛒 Carrito <span class="cart-count" id="cartCount">0</span>
+</div>
+
 <div class="overlay" id="overlay" onclick="toggleCart()"></div>
 
 <div class="cart" id="cart">
-<div class="cart-header"><h2>Tu Pedido</h2><div class="close-cart" onclick="toggleCart()">✕</div></div>
+<div class="cart-header">
+<h2>Tu Pedido</h2>
+<div class="close-cart" onclick="toggleCart()">✕</div>
+</div>
+
 <div id="cartItems"></div>
 <div class="cart-total">Total: <span id="cartTotal">0</span> LPS</div>
+
 <hr>
-<textarea id="notas" placeholder="Notas especiales (escribe acá...)"></textarea>
+
+<textarea id="notas" placeholder="Notas especiales"></textarea>
 <input type="text" id="nombre" placeholder="Nombre">
 <input type="tel" id="telefono" placeholder="Teléfono">
+
 <select id="pickupTime">
 <option value="">Hora de recogida</option>
 <option>15 minutos</option>
@@ -321,29 +344,144 @@ transform:translate(-50%, -50%) scale(1);
 <option>1 hora</option>
 <option>2 horas</option>
 </select>
+
 <button class="checkout-btn" id="checkoutBtn" onclick="checkout()">Finalizar Pedido</button>
 <div class="closed-message" id="closedMessage"></div>
-</div>
 
-<div id="confirmationBox" class="confirmation-box">
-✅ Pedido enviado correctamente.
 </div>
 
 <script>
 let cart=JSON.parse(localStorage.getItem("cart"))||{};
-function saveCart(){localStorage.setItem("cart",JSON.stringify(cart));}
-function toggleCart(){document.getElementById("cart").classList.toggle("active");document.getElementById("overlay").classList.toggle("active");}
-function getId(name){return name.replace(/[^a-zA-Z0-9]/g,'')+"-control";}
-function addItem(name,price){cart[name]={price:price,qty:1};renderMenuControl(name);renderCart();saveCart();}
-function changeQty(name,amount){cart[name].qty+=amount;if(cart[name].qty<=0){delete cart[name];resetControl(name);}renderCart();renderMenuControl(name);saveCart();}
-function resetControl(name){let id=getId(name);document.getElementById(id).innerHTML=`<button class="add-btn" onclick="addItem('${name}',${cart[name]?.price||0})">Agregar</button>`;}
-function renderMenuControl(name){if(!cart[name])return;let id=getId(name);document.getElementById(id).innerHTML=`<div class="qty-controls"><button onclick="changeQty('${name}',-1)">−</button>${cart[name].qty}<button onclick="changeQty('${name}',1)">+</button></div>`;}
-function renderCart(){let c=document.getElementById("cartItems");c.innerHTML="";let total=0,count=0;for(let item in cart){total+=cart[item].price*cart[item].qty;count+=cart[item].qty;c.innerHTML+=`<div class="cart-item">${cart[item].qty} ${item}<span>${cart[item].price*cart[item].qty} LPS</span><span class="remove" onclick="changeQty('${item}',-999)">🗑</span></div>`;}document.getElementById("cartTotal").innerText=total;document.getElementById("cartCount").innerText=count;}
-function isOpen(){let n=new Date();let d=n.getDay();if(d===0)return false;let c=n.getHours()*60+n.getMinutes();return(c>=450&&c<=810)||(c>=1020&&c<=1260);}
-function checkHours(){if(!isOpen()){document.getElementById("checkoutBtn").disabled=true;document.getElementById("closedMessage").innerText="Estamos cerrados en este momento.";}}
-function showConfirmation(){const box=document.getElementById("confirmationBox");box.classList.add("active");setTimeout(()=>{box.classList.remove("active");},3000);}
-function checkout(){if(!isOpen()){alert("Estamos cerrados.");return;}let nombre=document.getElementById("nombre").value;let telefono=document.getElementById("telefono").value;let pickup=document.getElementById("pickupTime").value;let notas=document.getElementById("notas").value;let total=0;let orderText="";for(let item in cart){orderText+=`• ${cart[item].qty} ${item}\n`;total+=cart[item].price*cart[item].qty;}let message=`🛎️ Nuevo Pedido\n\n👤 ${nombre}\n📞 ${telefono}\n⏰ ${pickup}\n\n📝 Pedido:\n${orderText}\n\n🗒 Notas: ${notas}\n\n💰 Total: ${total} LPS`;fetch("https://formsubmit.co/ajax/pupusasymashn@gmail.com",{method:"POST",headers:{'Content-Type':'application/json'},body:JSON.stringify({name:nombre,message:message,_subject:"Nuevo Pedido - Pupusas y Más"})});window.open(`https://wa.me/50487809196?text=${encodeURIComponent(message)}`,'_blank');localStorage.removeItem("cart");cart={};renderCart();toggleCart();showConfirmation();}
-renderCart();checkHours();Object.keys(cart).forEach(item=>renderMenuControl(item));
+function saveCart(){ localStorage.setItem("cart",JSON.stringify(cart)); }
+
+function toggleCart(){
+document.getElementById("cart").classList.toggle("active");
+document.getElementById("overlay").classList.toggle("active");
+}
+
+function getControlId(name){
+return name.replace(/[^a-zA-Z0-9]/g,'')+"-control";
+}
+
+function addItem(name,price){
+cart[name]={price:price,qty:1};
+renderMenuControl(name);
+renderCart();
+saveCart();
+}
+
+function changeQty(name,amount){
+cart[name].qty+=amount;
+if(cart[name].qty<=0){
+delete cart[name];
+resetControl(name);
+}
+renderCart();
+renderMenuControl(name);
+saveCart();
+}
+
+function removeItem(name){
+delete cart[name];
+resetControl(name);
+renderCart();
+saveCart();
+}
+
+function resetControl(name){
+let id=getControlId(name);
+document.getElementById(id).innerHTML=
+`<button class="add-btn" onclick="addItem('${name}',${cart[name]?.price||0})">Agregar</button>`;
+}
+
+function renderMenuControl(name){
+if(!cart[name]) return;
+let id=getControlId(name);
+document.getElementById(id).innerHTML=
+`<div class="qty-controls">
+<button onclick="changeQty('${name}',-1)">−</button>
+${cart[name].qty}
+<button onclick="changeQty('${name}',1)">+</button>
+</div>`;
+}
+
+function renderCart(){
+let cartItems=document.getElementById("cartItems");
+cartItems.innerHTML="";
+let total=0;
+let count=0;
+
+for(let item in cart){
+total+=cart[item].price*cart[item].qty;
+count+=cart[item].qty;
+
+cartItems.innerHTML+=`
+<div class="cart-item">
+<div>${cart[item].qty} ${item}</div>
+<span class="price">${cart[item].price*cart[item].qty} LPS</span>
+<button class="remove-btn" onclick="removeItem('${item}')">Eliminar</button>
+</div>`;
+}
+
+document.getElementById("cartTotal").innerText=total;
+document.getElementById("cartCount").innerText=count;
+}
+
+function isOpen(){
+let now=new Date();
+let day=now.getDay();
+if(day===0) return false;
+let current=now.getHours()*60+now.getMinutes();
+let mOpen=7*60+30, mClose=13*60+30;
+let eOpen=17*60, eClose=21*60;
+return (current>=mOpen && current<=mClose) || (current>=eOpen && current<=eClose);
+}
+
+function checkout(){
+if(!isOpen()){ alert("Estamos cerrados."); return; }
+
+let nombre=document.getElementById("nombre").value;
+let telefono=document.getElementById("telefono").value;
+let pickup=document.getElementById("pickupTime").value;
+let notas=document.getElementById("notas").value;
+
+let total=0;
+let orderText="";
+
+for(let item in cart){
+orderText+=`• ${cart[item].qty} ${item}\n`;
+total+=cart[item].price*cart[item].qty;
+}
+
+let message=
+`🛎️ Nuevo Pedido\n\n`+
+`👤 ${nombre}\n`+
+`📞 ${telefono}\n`+
+`⏰ ${pickup}\n\n`+
+`📝 Pedido:\n${orderText}\n\n`+
+`🗒 Notas: ${notas}\n\n`+
+`💰 Total: ${total} LPS`;
+
+fetch("https://formsubmit.co/ajax/pupusasymashn@gmail.com",{
+method:"POST",
+headers:{'Content-Type':'application/json'},
+body:JSON.stringify({
+name:nombre,
+message:message,
+_subject:"Nuevo Pedido - Pupusas y Más"
+})
+});
+
+window.open(`https://wa.me/50487809196?text=${encodeURIComponent(message)}`,'_blank');
+
+localStorage.removeItem("cart");
+cart={};
+renderCart();
+toggleCart();
+alert("Pedido enviado correctamente.");
+}
+
+renderCart();
 </script>
 
 </body>
